@@ -6,6 +6,7 @@ function(doc, req) {
 		var answer = eval('('+req.body+')');
 		answer.created = new Date().toJSON();
 		
+		
 		// BEWARE THIS ID IS NOT REPLICATION-SAFE
 		answer._id = doc._id + '-' + new Date().getTime();
 		

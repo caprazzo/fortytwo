@@ -1,23 +1,27 @@
 	
 <div class="question-details">
-	
-	<h1 class="question-title">{{title}}</h1>
-	<p class="question-body">{{question}}</p>
+	<h1 class="question-title"><a class="question-link" href="../../_show/question/{{_id}}">{{title}}</a></h1>
+	tags: <span class="tags">{{tags}}</span>
+		
+	<div class="question-body">{{question}}</div>
 
-	<div class="answers-list"></div>
-	
-	<div class="answer-form">
-		<textarea class="answer-area"></textarea>
-		<button class="answer-submit">answer</button>
-		<input type="hidden" class="question_id" value="{{_id}}">
+	<div class="question-asked">
+		<span class="elapsed">asked <span class="raw-date">{{created}}</span></span>
 	</div>
 	
+	<div class="answers-list-container"></div>
+	
+	<div class="answer-form">
+		<h1 class="answer-form-head">Have an answer?</h1>
+		<textarea class="answer-area"></textarea><br/>
+		<button class="answer-submit"><span><span>submit your answer</span></span></button>
+		<input type="hidden" class="question_id" value="{{_id}}">
+	</div>	
 </div>
 
-<script src="/_utils/script/jquery.js?1.3.1"></script>
 <script>
 	var question_id = $('.question_id').val();
-	$('.answers-list').load('../../_list/answers/answers?key="'+question_id+'"');
+	$('.answers-list-container').load('../../_list/answers/answers?key="'+question_id+'"');
 	$('.answer-submit').click(function() {
 		$.ajax({
 			url: '../../_update/answer/' + question_id,
@@ -27,7 +31,7 @@
 				question_id: $('.question_id').val()
 			}),
 			success: function() {
-				$('.answers-list').load('../../_list/answers/answers?key="'+question_id+'"');
+				$('.answers-list-container').load('../../_list/answers/answers?key="'+question_id+'"');
 			}
 		});
 	});

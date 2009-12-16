@@ -1,4 +1,4 @@
-var Q = {
+var FortyTwo = {
 	make_id_from_string: function(title) {
 		return title.toLowerCase()
 			.replace('&','and')

@@ -7,16 +7,11 @@
 	  				
 	<div class="title">
 		<a href="../../_show/question/{{_id}}"><h3>{{title}}</h3></a>
-		<span class="tags">
-			<span class="tag">java</span> 
-			<span class="tag">concurrency</span>
-			 <span class="tag">threading</span>
-			 <span class="tag">client-server</span>
-			 <span class="tag">rich-internet-application</span>
-		</span>	
+		<span class="tags"></span>	
+		{{#tags}} {{.}} {{/tags}}
 	</div>	  				
 	<div class="question-asked">
-		<span class="elapsed">asked {{relative_date}}</span>
+		<span class="elapsed">asked <span class="raw-date">on {{created}}</span></span>
 	</div>
 	
 </div>

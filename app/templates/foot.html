@@ -1,5 +1,14 @@
 		</div><!--/app-body-->
 	</body>
-<script src="/_utils/script/json2.js"></script>
-<script src="/_utils/script/jquery.js?1.3.1"></script>
+<script src="../../lib/pretty-date.js"></script>
+<script type="text/javascript" src="../../lib/SimplyButtons.js"></script>
+<script>
+	SimplyButtons.init(); 
+
+	$('span.raw-date').each(function(i, el) {
+		var str_date = el.innerHTML.replace(/^\s*on\s*/,'');
+		var date = new Date(str_date);
+		$(el).after('<a title="'+ str_date+'" class="relative-date">'+prettyDate(date)+'</a>').remove();
+	});
+</script>
 </html>

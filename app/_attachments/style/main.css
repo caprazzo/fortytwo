@@ -1,6 +1,12 @@
+/* @override http://localhost:5984/fortytwo/_design/fortytwo/style/main.css */
+
 body {
 	background-color: white;
 	font-family:monospace;
+	padding-bottom: 5em;
+}
+button {
+	cursor: pointer;
 }
 .link {
 	cursor: pointer;
@@ -21,9 +27,10 @@ a.link :visited {
 	color: white;
 	font-family: monospace;
 	font-weight: bold;
+	color:white;
 }
 .app-main {
-	width: 780px;
+	width: 60em;
 	margin-left: auto;
 	margin-right: auto;
 }    	
@@ -32,7 +39,7 @@ a.link :visited {
 	padding-bottom: 2em;
 	padding-left: 0.25em;
 	background-color: #00B7EB;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 	margin-top: 1em;
 }
 .app-tools .link {
@@ -49,7 +56,6 @@ a.link :visited {
 }    	
 .app-body {
 	background-color: white;
-	height: 500px;
 }    	
 .question-list {
 	padding-top: 1em;
@@ -72,7 +78,7 @@ a.link :visited {
 	text-decoration: underline;
 }    	
 .question-headline .counter {
-	background-color: 		#FF7F00;
+	background-color: #e3f4fd;
 	float:left;
 	text-align: center;
 	padding: 0.5em;
@@ -85,6 +91,84 @@ a.link :visited {
 	clear:both;
 	padding-top: 0.5em;
 }    	
+.ask-question-form {
+	font-size: 120%;
+	width: 46em;
+	margin-left: auto;
+	margin-right: auto;
+}
+.ask-question-form input,
+.ask-question-form textarea {
+	padding: 0.25em;
+	width: 30em;
+	
+}
+.ask-question-form textarea {
+	margin-top:  1em;
+	margin-bottom: 1em;
+	margin-left: 6em;
+	height: 8em;
+}
+.ask-question-form label {
+	width: 6em;
+	line-height: 1.5em;
+	display: block;
+	float: left;
+}
+.ask-question-form .ask-question-submit {
+	margin-left: 7em;
+}
+
+.question-details .question-link {
+	color: black;
+	text-decoration: none;
+}
+.question-details .question-link:hover {
+	color: blue;
+	text-decoration: underline;
+}
+.question-details .question-title {
+	font-size: 160%;
+}
+.question-details .question-body {
+	padding: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	background-color: #e3f4fd;
+	font-size: 110%;
+	color: #333;
+}
+.question-details .answers-list {
+	margin-top: 2em;
+	margin-bottom: 2em
+}
+.answer-form {
+	border-top: 1px dotted #ccc;
+	padding-top: 1.25em;
+}
+.answer-form .answer-form-head {
+	font-size: 120%;
+}
+.answer-form textarea {
+	width: 40em;
+	height: 8em;
+	margin-top: 1.25em;
+	margin-bottom: 1.25em
+}
+.answers-list .answers-list-header {
+	font-size: 140%;
+	border-bottom: 1px solid black;
+}
+.answer-list-item {
+	padding: 1em;
+	border-bottom: 1px dotted #CCC;
+}
+input, textarea {
+	padding: 0.25em;
+	border-style: solid solid solid solid;
+	border-width:  1px 1px 1px 1px;
+	border-color:  #555 #CCC #CCC #555;
+}
 .tags {
 	color:gray;
 	padding: 3px;
