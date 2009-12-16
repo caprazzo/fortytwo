@@ -1,0 +1,13 @@
+/* add styles here */
+
+div.question-summaries {
+	width: 30em;
+}
+div.question-summary {
+	border-bottom: 1px dotted gray;
+	margin:0;
+	margin-bottom: 3px;
+}
+div.question-summary .question-title {
+	margin: 0;
+}

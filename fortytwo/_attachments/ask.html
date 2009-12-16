@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>ask a question</title>
+		<script src="/_utils/script/json2.js"></script>
+		<script src="/_utils/script/jquery.js?1.3.1"></script>
+		<script src="lib/questions.js"></script>
+	</head>
+	<body>
+		
+		<div class="ask-question">			
+			title: <input type="text" class="question-title" name="question-title"/><br/>
+			body: <textarea class="question-body" name="question-body"></textarea><br/>
+			tags: <input type="text" class="question-tags"></input><br/>
+			<button class="ask-question-submit">ask!</button>
+		</div>
+		
+		<script>
+			$('.ask-question .ask-question-submit').click(function() {			
+				var $form = $(this);
+				try {	
+					var doc = {
+		  				title: $('.question-title').val(),
+		  				question: $('.question-body').val(),
+		  				tags: $('.question-tags').val()
+	  				}
+		  			
+		  			var id = 'question-' + Q.make_id_from_string(doc.title);		  						  		
+			  		$.ajax({
+		  				type: 'PUT',
+		  				url: '_update/question/' + id,
+		  				data: JSON.stringify(doc),
+		  				success: function() {
+		  					window.location = 'index.html';
+	  					},
+	  					error: function(e) {
+	  						alert('ko')
+	  					}  				
+	  				});		  				  				
+  				} catch(e) { alert(e); }
+  				return false;
+  		});
+		</script>
+	</body>
+</html>

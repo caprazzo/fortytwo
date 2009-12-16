@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>42</title>
+    <link rel="stylesheet" href="style/main.css" type="text/css">
+  </head>
+  <body>
+    <h1>42</h1>
+    <p>
+    	42 is inspired by the website stackoverflow.com.
+	</p>
+	<p>
+		<a href="ask.html">Ask a question</a>
+	</p>
+	<h2>recent questions:</h2>
+	<div id="questions" class="question-summaries"></div>
+  </body>
+
+  <script src="/_utils/script/json2.js"></script>
+  <script src="/_utils/script/jquery.js?1.3.1"></script>
+  <script src="/_utils/script/jquery.couch.js?0.9.0"></script>
+  <script src="/_utils/script/couch.js"></script>
+  <script src="lib/questions.js"></script>
+  <script>
+	function list_questions() {
+		$.ajax({
+  			type: 'GET',
+  			url: '_list/questions_summary/questions?descending=true',
+	  		success: function(html) {
+  				document.getElementById('questions').innerHTML = html;
+			},
+			error: function(e) {
+				alert('ko');
+			}  				
+		});		 
+  	}
+  	
+	$(function() {		
+		list_questions();
+		
+	  	$('#submit-question').click();
+  	});
+  </script>
+  
+</html>
