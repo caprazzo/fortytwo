@@ -1,0 +1,95 @@
+body {
+	background-color: white;
+	font-family:monospace;
+}
+.link {
+	cursor: pointer;
+	text-decoration: underline;
+	color: blue;
+}
+a.link :visited {
+	color: blue;
+}
+.forty-two-logo {
+	left: 8px;
+	top: 0.75em;
+	position:relative;
+	float:right;
+}
+.forty-two-logo div {
+	font-size: 400%;
+	color: white;
+	font-family: monospace;
+	font-weight: bold;
+}
+.app-main {
+	width: 780px;
+	margin-left: auto;
+	margin-right: auto;
+}    	
+.app-tools {
+	padding-top: 2em;
+	padding-bottom: 2em;
+	padding-left: 0.25em;
+	background-color: #00B7EB;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+.app-tools .link {
+	color: white;
+}    	
+.app-tools-search {
+	font-size: x-big;
+	border-style: solid none none solid;
+	border-width: 1px medium medium 1px;
+	border-color: #CCCCCC;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0.25em;
+}    	
+.app-body {
+	background-color: white;
+	height: 500px;
+}    	
+.question-list {
+	padding-top: 1em;
+}
+.question-headline {
+	background-color: white;
+	margin: 1em;    		
+	padding-bottom: 0.5em;
+	border-bottom: 1px dotted gray;
+}
+.question-headline h3 {
+	
+	display: block;
+	padding-left: 1em;
+	margin-bottom: 0.5em;
+	font-size:123.1%;
+	font-weight: bold;
+	font-family:verdana;
+	color:	black;
+	text-decoration: underline;
+}    	
+.question-headline .counter {
+	background-color: 		#FF7F00;
+	float:left;
+	text-align: center;
+	padding: 0.5em;
+	color: black;
+	margin-right: 0.75em;
+	height:100%;
+}
+.question-headline .question-asked {
+	color: #333;
+	clear:both;
+	padding-top: 0.5em;
+}    	
+.tags {
+	color:gray;
+	padding: 3px;
+}
+.tags .tag {
+	font-size: 85%;
+	font-family: monospace;
+}

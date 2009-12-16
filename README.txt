@@ -1,5 +1,5 @@
-OTTOMAN - dare to ask
----------------------
+fortytwo - answers to questions
+-------------------------------
 
-Ottoman is a couchdb application that makes it easy to ask 
-and answer questions. It is inspired by the website stackoverflow.com.
+fortytwo is a couchdb application that brings together questions and answers.
+It's an open source application based on CouchDb and is inspired by the website stackoverflow.com.

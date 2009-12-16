@@ -1,0 +1,1 @@
+couchapp push app http://localhost:5984/fortytwo
