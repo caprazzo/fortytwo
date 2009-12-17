@@ -7,9 +7,10 @@
 	  				
 	<div class="title">
 		<a href="../../_show/question/{{_id}}"><h3>{{title}}</h3></a>
-		<span class="tags"></span>	
-		{{#tags}} {{.}} {{/tags}}
+		<div class="question-preview">{{question_preview}}</div>	
+		<span class="tags">{{#tags}} {{.}} {{/tags}}</span>			
 	</div>	  				
+	
 	<div class="question-asked">
 		<span class="elapsed">asked <span class="raw-date">on {{created}}</span></span>
 	</div>

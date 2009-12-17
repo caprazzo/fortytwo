@@ -1,14 +1,25 @@
 <input type="hidden" value="{{q}}" id="q"/>
-<div class="search-results-list"></div>
+<div class="questions-list"></div>
 <script>
 	var q=$('#q').val();
+	var preview_length=100;
 	$.ajax({
-		url: '/fortytwo/_fti/fortytwo/questions?q='+q,
+		url: '/fortytwo/_fti/fortytwo/questions?include_docs=true&q='+q,
 		dataType: 'json',
 		success: function(results) {
 			for (var i=0; i<results.rows.length; i++) {
 				var row = results.rows[i];
-				$('.search-results-list').append('<div class="search-result-item"><a href="/fortytwo/_design/fortytwo/_show/question/'+row.id+'">'+row.id+'</a></div>');
+				
+				var question_url = '/fortytwo/_design/fortytwo/_show/question/'+row.id;
+				var title = '<div class="title"><a  href="'+question_url+'"><h3>'+row.doc.title+'</h3></a></div>';
+				
+				
+				var question_preview = (row.doc.question.length > preview_length) 
+				? row.doc.question.substring(0,100) + '...'
+				: row.doc.question;
+				var body = '<div class="question-body">'+question_preview+"</div>";
+				$('.questions-list')
+					.append('<div class="question-headline">'+title+body+'</div>');
 			}
 		}
 	});
