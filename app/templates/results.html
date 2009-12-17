@@ -1,0 +1,15 @@
+<input type="hidden" value="{{q}}" id="q"/>
+<div class="search-results-list"></div>
+<script>
+	var q=$('#q').val();
+	$.ajax({
+		url: '/fortytwo/_fti/fortytwo/questions?q='+q,
+		dataType: 'json',
+		success: function(results) {
+			for (var i=0; i<results.rows.length; i++) {
+				var row = results.rows[i];
+				$('.search-results-list').append('<div class="search-result-item"><a href="/fortytwo/_design/fortytwo/_show/question/'+row.id+'">'+row.id+'</a></div>');
+			}
+		}
+	});
+</script>
