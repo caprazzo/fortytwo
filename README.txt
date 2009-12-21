@@ -28,12 +28,18 @@ Ask question:
 Question details with list of answers:
 	_list/question_and_answers/questions?startkey=[&quot;{{_id}}&quot;,0]&endkey=[&quot;{{_id}}&quot,1]
 	
-	* answering needs ajax because _update functions want PUT
+	TROUBLES:
+	 - answering needs ajax because _update functions want PUT
+	 - it is not possible to know how many answers this question has, before they are 
+	   all rendered. A solution wuold be to cache and count the anwers while walking
+	   the iterator, but that would consume much more memory than just sendin output
+	   as the iterator unrolls. A pheraps better solution is to use a little javascript
+	   at the end of the stream.
 	
-	todo:
-		- order answers by most-recent
-		- count answers
-		
+	TODO:
+	 - count answers
+	 - order answers by most-recent
+	 	
 Search results:
 	_show/search/foo?q=ahaah
 	
