@@ -1,14 +1,13 @@
 function(doc, req) {
-
+	// !code _attachments/lib/fortytwo.js
 	// !code vendor/couchapp/date.js	
 	// the existing doc must be a question
 	if (doc) {
 		var answer = eval('('+req.body+')');
-		answer.created = new Date().toJSON();
+		var now = new Date();
+		answer.created = now.toJSON();
 		
-		
-		// BEWARE THIS ID IS NOT REPLICATION-SAFE
-		answer._id = doc._id + '-' + new Date().getTime();
+		answer._id = doc._id + '--answer--' + FortyTwo.make_timestamp_from_date(now);
 		
 		var reply = {
 			ok: 'answer accepted',

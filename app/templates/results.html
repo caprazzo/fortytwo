@@ -8,19 +8,17 @@
 		dataType: 'json',
 		success: function(results) {
 			for (var i=0; i<results.rows.length; i++) {
-				var row = results.rows[i];
+				var question = results.rows[i].doc;
+				var question_url = '/fortytwo/_design/fortytwo/_show/question/'+question._id;
+				var title = '<div class="title"><a  href="'+question_url+'"><h3>'+question.title+'</h3></a></div>';				
+				var question_preview = (question.question.length > preview_length) 
+				? question.question.substring(0,preview_length) + '...'
+				: question.question;
 				
-				var question_url = '/fortytwo/_design/fortytwo/_show/question/'+row.id;
-				var title = '<div class="title"><a  href="'+question_url+'"><h3>'+row.doc.title+'</h3></a></div>';
-				
-				
-				var question_preview = (row.doc.question.length > preview_length) 
-				? row.doc.question.substring(0,100) + '...'
-				: row.doc.question;
 				var body = '<div class="question-body">'+question_preview+"</div>";
 				$('.questions-list')
 					.append('<div class="question-headline">'+title+body+'</div>');
-			}
+			}			
 		}
 	});
 </script>

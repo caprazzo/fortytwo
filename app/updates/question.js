@@ -9,9 +9,10 @@ function(doc, req) {
 	// new question
 	else {
 		log(req.body);
+		var now = new Date();
 		doc = eval('('+req.body+')');
-		doc.created = new Date().toJSON();
-		doc._id = FortyTwo.make_id_from_string(req.docId);
+		doc.created = now.toJSON();
+		doc._id = FortyTwo.make_timestamp_from_date(now) + '-' + FortyTwo.make_id_from_string(req.docId);
 		if (doc.tags) {
 			var tags = []
 			doc.tags.split(',').forEach(function(tag) {

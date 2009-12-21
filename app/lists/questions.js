@@ -36,3 +36,4 @@ function(head, req) {
 	send(Mustache.to_html(templates.foot),{});
 		
 }
+
