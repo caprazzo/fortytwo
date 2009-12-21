@@ -4,6 +4,9 @@ fortytwo - answers to questions
 fortytwo is a couchdb application that brings together questions and answers.
 It's an open source application based on CouchDb and is inspired by the website stackoverflow.com.
 
+It is also an experiment in building a couchdb application serverside-only, with 
+no javascript dependencies on the client.
+
 
 Pages breakdown
 ---------------
@@ -19,6 +22,9 @@ Questions list/Entry page:
 		display summary of question
 		more recent questions first
 	
+Ask question:
+	_show/ask/
+	
 Question details with list of answers:
 	_list/question_and_answers/questions?startkey=[&quot;{{_id}}&quot;,0]&endkey=[&quot;{{_id}}&quot,1]
 	
@@ -28,15 +34,16 @@ Question details with list of answers:
 		- order answers by most-recent
 		- count answers
 		
-Ask question:
-	_show/ask/
-	
-		
 Search results:
 	_show/search/foo?q=ahaah
+	
+	results are fetched from _fti using ajax and rendered with string concatenation,
+	hardly a good thing.
+	
 	todo:
-		- same layout as questions list
-		- order by relevance
-		- consider number of answers in relevance count
+		- display 'no results' when query returns empty
+		- use templates for rendering
+		- display answer count
+		- order by relevance and answer count		
 		- include summary of question
 			
