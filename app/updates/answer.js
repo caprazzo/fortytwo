@@ -4,10 +4,12 @@ function(doc, req) {
 	// the existing doc must be a question
 	if (doc) {
 		var answer = eval('('+req.body+')');
-		var now = new Date();
-		answer.created = now.toJSON();
 		
-		answer._id = doc._id + '--answer--' + FortyTwo.make_timestamp_from_date(now);
+		// store servertime...
+		answer.created = (new Date()).toJSON();
+		
+		// ...but use client-time on the id to ensure double posts don't collide		
+		answer._id = doc._id + '--answer--' + answer.time;
 		
 		var reply = {
 			ok: 'answer accepted',

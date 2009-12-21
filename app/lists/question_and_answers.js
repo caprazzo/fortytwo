@@ -4,16 +4,20 @@ function(head, req) {
 // !code lib/mustache.js	
 
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
-	send('<pre>');
 	
+	var question_doc;
 	while(row = getRow()) {
 		if (row.value.question) {
-			send(row.value.title + '\n');
-			//send(Mustache.to_html(templates.head, {title:row.value.question}));
-			//send(Mustache.to_html(templates.question_detail, row.value));
+			question_doc = row.value;
+			send(Mustache.to_html(templates.head, {title:question_doc.question}));
+			send(Mustache.to_html(templates.question_detail, question_doc));
+			send(Mustache.to_html(templates.answers.list_head));
 		}
 		else {
-			send('\t'+row.value.answer + '\n');
+			send(Mustache.to_html(templates.answers.list_item, row.value));
 		}
-	}		
+	}	
+	send(Mustache.to_html(templates.answers.list_foot));
+	send(Mustache.to_html(templates.answer_form, question_doc));
+	send(Mustache.to_html(templates.foot));
 }

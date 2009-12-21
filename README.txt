@@ -24,5 +24,11 @@ Question details (old):
 	and ajax load of list h_design/fortytwo/_list/answers/answers?key=%22<question_id>%22
 	
 Question details and answers:
-	/_design/fortytwo/_list/question_and_answers/questions?startkey=["<question_id>",0]&endkey=["<question_id>",1]
+	_list/question_and_answers/questions?startkey=[&quot;{{_id}}&quot;,0]&endkey=[&quot;{{_id}}&quot,1]
+	
+	* answering needs ajax because _update functions want PUT
+	
+	todo:
+		- order answers by most-recent
+		- count answers
 			
