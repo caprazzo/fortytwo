@@ -1,3 +1,8 @@
+/**
+	Used with {@link views.questions}?<strong>startkey=["{{question_id}}",0]&endkey=["{{question_id}}",1]</strong>
+	will show a question and all its answers.
+	@name lists.question_and_answers
+*/
 function(head, req) {
 
 // !json templates

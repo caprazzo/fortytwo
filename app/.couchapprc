@@ -1,1 +1,10 @@
-{}
+{
+	"extensions": {
+		"docs":{}
+	},
+	"hooks":{
+		"pre-push":{
+			"docs":true
+		}
+	}
+}

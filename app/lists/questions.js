@@ -1,5 +1,9 @@
+/**
+	Used with {@link views.questions}?<strong>descending=true</strong>
+	will show most recent questions first and a count of answers for each question.
+	@name lists.questions
+*/
 function(head, req) {
-	
 // !json templates
 // !code lib/mustache.js
 
@@ -25,13 +29,7 @@ function(head, req) {
 			answers = 0;
 		} 	
 	}
-	/*
-	if (question) {
-		question.relative_date = '300s ago';
-		question.answers = ans
-		send(Mustache.to_html(templates.question_list_item, question));
-	}
-	*/
+	
 	send(Mustache.to_html(templates.questions.list_foot));
 	send(Mustache.to_html(templates.foot),{});
 		

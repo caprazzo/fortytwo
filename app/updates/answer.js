@@ -1,3 +1,10 @@
+/**
+	Handler for a newly submitted answer, builds an _id using the question id plus a timestamp,
+	<strong>must be invoked for an existing question</strong>	
+	@name answer
+	@class
+	@memberOf updates
+*/
 function(doc, req) {
 	// !code _attachments/lib/fortytwo.js
 	// !code vendor/couchapp/date.js	
@@ -16,7 +23,7 @@ function(doc, req) {
 			answer: answer
 		}
 		
-		return [answer, toJSON(answer)];
+		return [answer, toJSON(reply)];
 	}
 	throw('question must exist');
 }

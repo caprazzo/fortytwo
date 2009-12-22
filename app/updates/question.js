@@ -1,3 +1,10 @@
+/**
+	Handler for a newly submitted question, builds an _id using
+	the current date and the question title; splits tags into an array
+	@name question
+	@class
+	@memberOf updates
+*/
 function(doc, req) {
 	// !code _attachments/lib/fortytwo.js
 	// !code vendor/couchapp/date.js

@@ -1,3 +1,7 @@
+/**
+	Index question title and body
+	@name fulltext.questions.index
+*/
 function(doc) {
 	if (doc.question) {
 	    var ret = new Document();
