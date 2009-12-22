@@ -1,10 +1,20 @@
 {
-	"extensions": {
-		"docs":{}
-	},
-	"hooks":{
-		"pre-push":{
-			"docs":true
-		}
-	}
+    "extensions": {
+        "compress": {}
+    },
+
+    "hooks": {
+        "pre-push": {
+            "compress": {
+                "js": {
+                    "test.js": [
+                        "vendor/couchapp/date.js",
+                        "vendor/couchapp/path.js"
+                    ]
+                }
+            }
+        }
+    }
+
 }
+ 
