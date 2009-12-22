@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>docs</title>
+		<style type="text/css">
+			body {
+				background-color: #00B7EB;
+				font-family: sans-serif;
+			}
+			.content {
+				width: 40em;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: white;
+				border: 1px solid #ddd;
+				padding: 1em;
+				margin-top: 1em;
+				margin-bottom: 2em;
+			}
+			h2 {
+				margin-left: 0.5em;
+				color: #333;
+				border-bottom: 1px solid #333;
+				margin-bottom:0;
+			}
+			h3 {
+				margin-left: 1em;
+			}
+			h4, div.desc {
+				margin-left: 1.5em;
+			}
+			div.desc {
+				padding: 0.25em;
+			}
+			div.top {				
+				text-align:right;
+				position: relative;
+				top: -1.5em;
+			}
+			a, a:visited {
+				color: #00B7EB;
+			}
+			a.link-source {
+				font-size: small;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<h1>documentation</h1>
+			<ol>
+				<li><a href="#views">views</a></li>
+				<li><a href="#shows">shows</a></li>
+				<li><a href="#lists">lists</a></li>
+				<li><a href="#updates">updates</a></li>
+				<li><a href="#fulltext">fulltext</a></li>				
+			</ol>
+			<h2><a name="views">views</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			<for each="name" in="keys(data.views)">
+				{!
+					path = 'views.' + name;
+					output += '<h3><a name="' + path + '">' + name + '</a></h3>';
+					data.views[name].forEach(function(symbol) {
+						output += '<h4>' + symbol.name + '</h4>';						
+						output += '<div class="desc">';
+						output += resolveLinks(symbol.desc);
+						output += '<br/><a class="link-source" href="'+symbol.viewSource+'">view source</a>';
+						output += '</div>';									
+					});		
+				!}
+			</for>
+			
+			<h2><a name="shows">shows</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			<for each="symbol" in="data.shows">
+				{!
+					output += '<h3>' + symbol.name + '</h3><div class="desc">';
+					output += resolveLinks(symbol.desc);
+					output += '<br/><a class="link-source" href="'+symbol.viewSource+'">view source</a>';
+					output += '</div>';		
+				!}
+			</for>
+			
+			<h2><a name="lists">lists</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			<for each="symbol" in="data.lists">
+				{!
+					output += '<h3>' + symbol.name + '</h3><div class="desc">';
+					output += resolveLinks(symbol.desc);
+					output += '<br/><a class="link-source" href="'+symbol.viewSource+'">view source</a>';
+					output += '</div>';		
+				!}
+			</for>
+			
+			<h2><a name="updates">updates</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			<for each="symbol" in="data.updates">
+				{!
+					output += '<h3>' + symbol.name + '</h3><div class="desc">';
+					output += resolveLinks(symbol.desc);
+					output += '<br/><a class="link-source" href="'+symbol.viewSource+'">view source</a>';
+					output += '</div>';		
+				!}
+			</for>
+			
+			<h2><a name="fulltext">fulltext</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			<for each="name" in="keys(data.fulltext)">
+				{!
+					path = 'fulltext.' + name;
+					output += '<h3><a name="' + path + '">' + name + '</a></h3>';
+					data.fulltext[name].forEach(function(symbol) {
+						output += '<h4>' + symbol.name + '</h4><div class="desc">';
+						output += resolveLinks(symbol.desc);
+						output += '<br/><a class="link-source" href="'+symbol.viewSource+'">view source</a>';
+						output += '</div>';
+					});		
+				!}
+			</for>
+		</div>
+	</body>
+</html>
