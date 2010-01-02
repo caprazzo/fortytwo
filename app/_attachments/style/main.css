@@ -16,6 +16,13 @@ button {
 a.link :visited {
 	color: blue;
 }
+.docs-menu {
+	float: right;
+	padding-right: 0.25em;
+}
+.docs-menu a {
+	color: white;
+}
 .forty-two-logo {
 	left: 8px;
 	top: 0.75em;
