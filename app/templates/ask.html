@@ -28,7 +28,8 @@
 						dataType: 'json',
 		  				success: function(data) {
 							if (data.ok) {
-		  						window.location = '../../_show/question/'+data.id;
+								var url = '../../_list/question_and_answers/questions?startkey=["'+data.id+'",0]&endkey=["'+data.id+'",1]';
+								window.location = url;
 							}
 	  					},
 	  					error: function(e) {

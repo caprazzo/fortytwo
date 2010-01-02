@@ -9,7 +9,7 @@
 		success: function(results) {
 			for (var i=0; i<results.rows.length; i++) {
 				var question = results.rows[i].doc;
-				var question_url = '/fortytwo/_design/fortytwo/_show/question/'+question._id;
+				var question_url = '/fortytwo/_design/fortytwo/_list/question_and_answers/questions?startkey=["'+question._id+'",0]&endkey=["'+question._id+'",1]';
 				var title = '<div class="title"><a  href="'+question_url+'"><h3>'+question.title+'</h3></a></div>';				
 				var question_preview = (question.question.length > preview_length) 
 				? question.question.substring(0,preview_length) + '...'

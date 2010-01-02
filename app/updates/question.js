@@ -15,11 +15,12 @@ function(doc, req) {
 	}
 	// new question
 	else {
-		log(req.body);
+		// trunk uses req.id, 0.10 req.docId
+		if (!req.id) req.id = req.docId;
 		var now = new Date();
 		doc = eval('('+req.body+')');
 		doc.created = now.toJSON();
-		doc._id = FortyTwo.make_timestamp_from_date(now) + '-' + FortyTwo.make_id_from_string(req.docId);
+		doc._id = FortyTwo.make_timestamp_from_date(now) + '-' + FortyTwo.make_id_from_string(req.id);
 		if (doc.tags) {
 			var tags = []
 			doc.tags.split(',').forEach(function(tag) {
