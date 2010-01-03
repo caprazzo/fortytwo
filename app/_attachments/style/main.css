@@ -19,6 +19,7 @@ a.link :visited {
 .docs-menu {
 	float: right;
 	padding-right: 0.25em;
+	color: gray;
 }
 .docs-menu a {
 	color: white;
