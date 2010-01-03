@@ -10,6 +10,8 @@ This is also an experiment in building a tutorial couchdb application.
 As of couchdb 0.11(trunk) and couchdb-lucene 0.5(trunk) the app needs client-side javascript because _update functions only accept PUT (and html doesn't) and couchdb-lucene is not integrated with couchdb _list functions.
 
 
+Docs have been created using jsDoc and the provided jsdoc-template. 
+
 Setup
 =====
 
