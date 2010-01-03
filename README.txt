@@ -3,7 +3,12 @@ fortytwo - answers and questions
 
 fortytwo is an ask-and-answer web application much like stackoverflow.com.
 
-It is also an experiment in building a couchdb application serverside-only, with no javascript dependencies on the client.
+Demo: http://caprazzi.net:5984/fortytwo/_design/fortytwo/index.html
+Docs: http://caprazzi.net:5984/fortytwo/_design/fortytwo/docs/index.html
+
+This is also an experiment in building a tutorial couchdb application.
+As of couchdb 0.11(trunk) and couchdb-lucene 0.5(trunk) the app needs client-side javascript because _update functions only accept PUT (and html doesn't) and couchdb-lucene is not integrated with couchdb _list functions.
+
 
 Setup
 =====
@@ -11,62 +16,45 @@ Setup
 git clone git://github.com/mcaprari/fortytwo.git
 cd fortytwo
 couchapp push app http://localhost:5984/fortytwo
+create a document with id 'search' in database fortytwo
 
-
-TODO
-====
-- figure out how to unit test couchapps
-- post new question without javascript (_update handlers only supports PUT, html forms only POST and PUT)
-- add votes
-- automate generation of docs
-- add a compile/compress step
+install, configure and run couchdb-lucene
 
 Pages breakdown
 ===============
 
 Questions list/Entry page
--------------------------
+_list/questions/questions?descending=true
 
-	_list/questions/questions?descending=true
-	couchdb _list function 'questions' + view 'questions'
-	
-	all server-side
-		display titles
-		display answer count
-		display summary of question
-		more recent questions first
-	
-Ask question
-------------
-	_show/ask/
-	
+Ask Question
+_show/ask/
+
 Question details with list of answers
--------------------------------------
-	_list/question_and_answers/questions?startkey=[&quot;{{_id}}&quot;,0]&endkey=[&quot;{{_id}}&quot,1]
-	
-	NOTES:
-	 - answering needs ajax because _update functions want PUT
-	 - it is not possible to know how many answers this question has, before they are 
-	   all rendered. A solution would be to cache and count the answers while walking
-	   the iterator, but that would consume much more memory than just sending output
-	   as the iterator unrolls. A perhaps better solution is to use a little javascript
-	   at the end of the stream.
-	
-	TODO:
-	 - count answers
-	 - order answers by most-recent
-	 	
+_list/question_and_answers/questions?startkey=["{{_id}}",0]&endkey=["{{_id}}",1]
+
 Search results
---------------
-	_show/search/foo?q=ahaah
-	
-	results are fetched from _fti using ajax and rendered with string concatenation,
-	hardly a good thing.
-	
-	todo:
-		- display 'no results' when query returns empty
-		- use templates for rendering
-		- display answer count
-		- order by relevance and answer count		
-		- include summary of question
-			
+_show/search/foo?q=ahaah
+
+NOTES
+=====
+
+- answering needs javascript because _update functions mandate PUT and html
+forms don't have it
+
+- it is not possible to know how many answers this question has, before they are all rendered. A solution would be to cache and count the answers while walking the iterator, but that would consume much more memory than just sending output as the iterator unrolls. A different solution is to output the count at the end of the list and reposition it with some javascript.
+
+TODO
+====
+- fix urls so that app is database and design name independent
+- figure out how to unit test
+- add votes
+- add paging
+- automate generation of docs with jsDoc
+- add a compile/compress step
+
+- in question details view, count answers 
+- in question details view, order answers by most-recent
+
+
+
+

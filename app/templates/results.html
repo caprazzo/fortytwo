@@ -9,9 +9,10 @@
 		success: function(results) {
 			for (var i=0; i<results.rows.length; i++) {
 				var question = results.rows[i].doc;
-				var startkey = encodeURIComponent('startkey=["'+question._id+'",0]');
-				var endkey = encodeURIComponent('endkey=["'+question._id+'",1]');
-				var question_url = '/fortytwo/_design/fortytwo/_list/question_and_answers/questions?'+startkey+'&'+endkey;
+				var startkey = '[&quot;' + question._id + '&quot;,0]';
+				var endkey = '[&quot;'+question._id+'&quot;,1]';
+				//var question_url = '../../_list/question_and_answers/questions?startkey=[&quot;{{_id}}&quot;,0]&endkey=[&quot;{{_id}}&quot,1]';
+				var question_url = '/fortytwo/_design/fortytwo/_list/question_and_answers/questions?startkey='+startkey+'&endkey='+endkey;
 				var title = '<div class="title"><a  href="'+question_url+'"><h3>'+question.title+'</h3></a></div>';				
 				var question_preview = (question.question.length > preview_length) 
 				? question.question.substring(0,preview_length) + '...'

@@ -22,6 +22,9 @@ var FortyTwo = {
 			+ '-' + FortyTwo.zeropad(date.getUTCHours(), 2)
 			+ FortyTwo.zeropad(date.getUTCMinutes(), 2);
 		
+	},
+	question_details_link: function(question_id) {
+		
 	}
 	
 	
