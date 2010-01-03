@@ -1,4 +1,4 @@
-fortytwo - answers for questions
+fortytwo - answers and questions
 ================================
 
 fortytwo is an ask-and-answer web application much like stackoverflow.com.
@@ -16,10 +16,10 @@ couchapp push app http://localhost:5984/fortytwo
 TODO
 ====
 - figure out how to unit test couchapps
-- post new question without javascript (need to POST an _update handler)
+- post new question without javascript (_update handlers only supports PUT, html forms only POST and PUT)
 - add votes
 - automate generation of docs
-- add a compile step
+- add a compile/compress step
 
 Pages breakdown
 ===============
