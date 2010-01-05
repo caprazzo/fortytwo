@@ -31,15 +31,17 @@
 <span class='line'> 24</span> 			</span><span class="NAME">question.question_preview</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">question.question.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">preview_length</span><span class="PUNC">)</span><span class="WHIT"> 
 <span class='line'> 25</span> 				</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">question.question.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NUMB">100</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'...'</span><span class="WHIT">
 <span class='line'> 26</span> </span><span class="WHIT">				</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">question.question</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 27</span> </span><span class="WHIT">				
-<span class='line'> 28</span> 			</span><span class="NAME">send</span><span class="PUNC">(</span><span class="NAME">Mustache.to_html</span><span class="PUNC">(</span><span class="NAME">templates.questions.list_item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">question</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 29</span> </span><span class="WHIT">			</span><span class="NAME">answers</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 30</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT"> 	
-<span class='line'> 31</span> 	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="WHIT">	
-<span class='line'> 33</span> 	</span><span class="NAME">send</span><span class="PUNC">(</span><span class="NAME">Mustache.to_html</span><span class="PUNC">(</span><span class="NAME">templates.questions.list_foot</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="NAME">send</span><span class="PUNC">(</span><span class="NAME">Mustache.to_html</span><span class="PUNC">(</span><span class="NAME">templates.foot</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="WHIT">		
-<span class='line'> 36</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 37</span> 
-<span class='line'> 38</span> </span></pre></body></html>
+<span class='line'> 27</span> </span><span class="WHIT">			
+<span class='line'> 28</span> 			</span><span class="NAME">question.url_id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">encodeURIComponent</span><span class="PUNC">(</span><span class="NAME">question._id</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/%22/g</span><span class="PUNC">,</span><span class="STRN">"%5C%22"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">	
+<span class='line'> 29</span> 			
+<span class='line'> 30</span> 			</span><span class="NAME">send</span><span class="PUNC">(</span><span class="NAME">Mustache.to_html</span><span class="PUNC">(</span><span class="NAME">templates.questions.list_item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">question</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">			</span><span class="NAME">answers</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT"> 	
+<span class='line'> 33</span> 	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">	
+<span class='line'> 35</span> 	</span><span class="NAME">send</span><span class="PUNC">(</span><span class="NAME">Mustache.to_html</span><span class="PUNC">(</span><span class="NAME">templates.questions.list_foot</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="NAME">send</span><span class="PUNC">(</span><span class="NAME">Mustache.to_html</span><span class="PUNC">(</span><span class="NAME">templates.foot</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">		
+<span class='line'> 38</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span></pre></body></html>
