@@ -123,14 +123,19 @@ a.link :visited {
 	display: block;
 	float: left;
 }
-.ask-question-form .format-help {
-	margin-left:  8.75em;
+.format-help {
 	color: gray;
 	font-size: 80%;
 	text-align: center;
-	width: 37.5em;
 	padding-top: 0.25em;
 	padding-bottom: 2em;
+}
+.answer-form .format-help {
+	width: 50em;
+}
+.ask-question-form .format-help {
+	margin-left:  8.75em;
+	width: 37.5em;
 }
 .ask-question-form .ask-question-submit {
 	margin-left: 7em;
