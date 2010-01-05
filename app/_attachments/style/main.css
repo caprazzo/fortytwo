@@ -184,7 +184,13 @@ a.link :visited {
 }
 .answer-list-item {
 	padding: 1em;
+	padding-left: 0;
 	border-bottom: 1px dotted #CCC;
+}
+.answer-body {
+	padding: 0.2em;
+	margin-bottom: 0.3em;
+	background-color: #e3f8e1;
 }
 input, textarea {
 	padding: 0.25em;
