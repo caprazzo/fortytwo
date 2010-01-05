@@ -24,7 +24,9 @@ function(head, req) {
 			question.question_preview = (question.question.length > preview_length) 
 				? question.question.substring(0,100) + '...'
 				: question.question;
-				
+			
+			question.url_id = encodeURIComponent(question._id).replace(/%22/g,"%5C%22");	
+			
 			send(Mustache.to_html(templates.questions.list_item, question));
 			answers = 0;
 		} 	
