@@ -123,6 +123,15 @@ a.link :visited {
 	display: block;
 	float: left;
 }
+.ask-question-form .format-help {
+	margin-left:  8.75em;
+	color: gray;
+	font-size: 80%;
+	text-align: center;
+	width: 37.5em;
+	padding-top: 0.25em;
+	padding-bottom: 2em;
+}
 .ask-question-form .ask-question-submit {
 	margin-left: 7em;
 }
@@ -149,6 +158,12 @@ a.link :visited {
 .question-details .answers-list {
 	margin-top: 2em;
 	margin-bottom: 2em
+}
+.question-preview {
+	padding: 0.25em;
+}
+.question-preview * {
+	display: inline;
 }
 .answer-form {
 	border-top: 1px dotted #ccc;
@@ -184,4 +199,30 @@ input, textarea {
 .tags .tag {
 	font-size: 85%;
 	font-family: monospace;
+}
+
+.markdown * {
+	line-height:1.4em;
+}
+.markdown p {
+	margin: 0.25em 0.1em 0.6em;
+}
+.markdown h2 {
+	font-size: 130%;
+	font-weight: bold;
+	margin: 0.40em 0.1em;
+}
+.markdown ul {
+	padding-left: 2em;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+.markdown li {
+	list-style: square;
+}
+.markdown strong {
+	font-weight: bold;
+}
+.markdown em {
+	font-style: italic;
 }

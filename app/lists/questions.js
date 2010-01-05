@@ -6,6 +6,7 @@
 function(head, req) {
 // !json templates
 // !code lib/mustache.js
+// !code lib/showdown.js
 
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
 
@@ -13,6 +14,8 @@ function(head, req) {
 	send(Mustache.to_html(templates.head, {title:"questions"}));
 	send(Mustache.to_html(templates.questions.list_head));
 	answers = 0;
+	var converter = new Showdown.converter();
+
 	while (row = getRow()) {
 		if (row.value.answer) {
 			answers++;
@@ -21,9 +24,12 @@ function(head, req) {
 			var question = row.value;
 			question.answers = answers;
 			
+			
 			question.question_preview = (question.question.length > preview_length) 
-				? question.question.substring(0,100) + '...'
-				: question.question;
+				? converter.makeHtml(question.question.substring(0,100)) + '...'
+				: converter.makeHtml(question.question);
+				
+			
 			
 			question.url_id = encodeURIComponent(question._id).replace(/%22/g,"%5C%22");	
 			

@@ -7,6 +7,7 @@ function(head, req) {
 
 // !json templates
 // !code lib/mustache.js	
+// !code lib/showdown.js
 
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
 	
@@ -15,6 +16,8 @@ function(head, req) {
 		if (row.value.question) {
 			question_doc = row.value;
 			question_doc.url_id = encodeURIComponent(question_doc._id).replace(/%22/g,"%5C%22");
+			var converter = new Showdown.converter();
+			question_doc.question_html = converter.makeHtml(question_doc.question);
 			send(Mustache.to_html(templates.head, {title:question_doc.question}));
 			send(Mustache.to_html(templates.question_detail, question_doc));
 			send(Mustache.to_html(templates.answers.list_head));
