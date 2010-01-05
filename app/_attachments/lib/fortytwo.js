@@ -5,7 +5,8 @@ var FortyTwo = {
 			.replace('&','and')
 			.replace(/[\(\)\{\}\[\]!%?*&\\\s]/g,'-')
 			.replace(/-+/g,'-')
-			.replace(/-$/,'');
+			.replace(/-$/,'')
+			.replace(/"/g,'');
 	},
 	
 	zeropad: function(number, size) {

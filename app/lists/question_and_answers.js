@@ -14,6 +14,7 @@ function(head, req) {
 	while(row = getRow()) {
 		if (row.value.question) {
 			question_doc = row.value;
+			question_doc.url_id = encodeURIComponent(question_doc._id).replace(/%22/g,"%5C%22");
 			send(Mustache.to_html(templates.head, {title:question_doc.question}));
 			send(Mustache.to_html(templates.question_detail, question_doc));
 			send(Mustache.to_html(templates.answers.list_head));
