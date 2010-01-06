@@ -15,6 +15,9 @@ function(doc, req) {
 		// store servertime...
 		answer.created = (new Date()).toJSON();
 		
+		// copy question creation date
+		answer.question_created = doc.created;
+		
 		// ...but use client-time on the id to ensure double posts don't collide		
 		answer._id = doc._id + '--answer--' + answer.time;
 		
