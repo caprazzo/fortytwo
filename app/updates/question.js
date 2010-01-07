@@ -1,6 +1,5 @@
 /**
-	Handler for a newly submitted question, builds an _id using
-	the current date and the question title; splits tags into an array
+	Handler for a newly submitted question
 	@name question
 	@class
 	@memberOf updates

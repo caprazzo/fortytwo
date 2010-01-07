@@ -1,5 +1,5 @@
 /**
-	Handler for a newly submitted answer, builds an _id using the question id plus a timestamp,
+	Handler for a newly submitted answer
 	<strong>must be invoked for an existing question</strong>	
 	@name answer
 	@class
@@ -18,7 +18,6 @@ function(doc, req) {
 		// copy question creation date
 		answer.question_created = doc.created;
 		
-		// ...but use client-time on the id to ensure double posts don't collide		
 		answer.question_id = doc._id;
 		
 		var reply = {

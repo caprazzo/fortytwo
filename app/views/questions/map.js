@@ -22,6 +22,6 @@ function(doc) {
 		emit([doc._id, 0], doc);
 	}
 	if (doc.answer) {
-		emit([doc.question_id, 1], doc);
+		emit([doc.question_id, doc.created], doc);
 	}
 }
