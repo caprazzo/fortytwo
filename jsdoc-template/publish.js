@@ -60,6 +60,7 @@ function publish(symbolSet) {
 	});
 			
 	IO.saveFile(publish.conf.outDir, "index"+publish.conf.ext, couchappTemplate.process(couchapp));
+    IO.copyFile(publish.conf.templatesDir+"style.css", publish.conf.outDir);
 }
 
 /** Turn a raw source file into a code-hilited page in the docs. */
