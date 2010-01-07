@@ -7,21 +7,24 @@
 	</div>	
 	<script>
 	var question_id = $('.question_id').val();
-	$('.answer-submit').click(function() {
-		$.ajax({
-			url: '../../_update/answer/' + question_id,
-			type: 'PUT',
-			data: JSON.stringify({
-				time: new Date().getTime(),
-				answer: $('.answer-area').val(),
-				question_id: $('.question_id').val()
-			}),
-			success: function() {
-				window.location = window.location;
-			},
-			error: function(e) {
-				throw(e);
-			}
+	FortyTwo.uuid(function(uuid) {
+		$('.answer-submit').click(function() {
+			$.ajax({
+				url: '../../_update/answer/' + question_id,
+				type: 'PUT',
+				data: JSON.stringify({
+					time: new Date().getTime(),
+					answer: $('.answer-area').val(),
+					question_id: $('.question_id').val(),
+					_id: uuid
+				}),
+				success: function() {
+					window.location = window.location;
+				},
+				error: function(e) {
+					throw(e);
+				}
+			});
 		});
 	});
 	</script>
