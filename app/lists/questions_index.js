@@ -7,11 +7,11 @@ function(head, req) {
 // !json templates
 // !code lib/mustache.js
 // !code lib/showdown.js
-
+// !
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
 
 	var preview_length=100;	
-	send(Mustache.to_html(templates.head, {title:"questions"}));
+	send(Mustache.to_html(templates.app_head, {title:"questions"}));
 	send(Mustache.to_html(templates.questions.list_head));
 	answers = 0;
 	var converter = new Showdown.converter();
@@ -36,7 +36,7 @@ function(head, req) {
 	}
 	
 	send(Mustache.to_html(templates.questions.list_foot));
-	send(Mustache.to_html(templates.foot),{});
+	send(Mustache.to_html(templates.app_foot),{});
 		
 }
 

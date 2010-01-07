@@ -19,7 +19,7 @@ function(head, req) {
 			question_doc.url_id = encodeURIComponent(question_doc._id).replace(/%22/g,"%5C%22");
 
 			question_doc.question_html = converter.makeHtml(FortyTwo.escape(question_doc.question));
-			send(Mustache.to_html(templates.head, {title:question_doc.title}));
+			send(Mustache.to_html(templates.app_head, {title:question_doc.title}));
 			send(Mustache.to_html(templates.question_detail, question_doc));
 			send(Mustache.to_html(templates.answers.list_head));
 		}
@@ -30,5 +30,5 @@ function(head, req) {
 	}	
 	send(Mustache.to_html(templates.answers.list_foot));
 	send(Mustache.to_html(templates.answer_form, question_doc));
-	send(Mustache.to_html(templates.foot));
+	send(Mustache.to_html(templates.app_foot));
 }
