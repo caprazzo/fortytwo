@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>docs</title>
+		<style type="text/css">
+			body {
+				background-color: #00B7EB;
+				font-family: sans-serif;
+			}
+			.content {
+				width: 40em;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: white;
+				border: 1px solid #ddd;
+				padding: 1em;
+				margin-top: 1em;
+				margin-bottom: 2em;
+			}
+			h2 {
+				margin-left: 0.5em;
+				color: #333;
+				border-bottom: 1px solid #333;
+				margin-bottom:0;
+			}
+			h3 {
+				margin-left: 1em;
+			}
+			h4, div.desc {
+				margin-left: 1.5em;
+			}
+			div.desc {
+				padding: 0.25em;
+			}
+			div.top {				
+				text-align:right;
+				position: relative;
+				top: -1.5em;
+			}
+			a, a:visited {
+				color: #00B7EB;
+			}
+			a.link-source {
+				font-size: small;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<h1>documentation</h1>
+			<ol>
+				<li><a href="#views">views</a></li>
+				<li><a href="#shows">shows</a></li>
+				<li><a href="#lists">lists</a></li>
+				<li><a href="#updates">updates</a></li>
+				<li><a href="#fulltext">fulltext</a></li>				
+			</ol>
+			<h2><a name="views">views</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			
+				<h3><a name="views.questions">questions</a></h3><h4>map</h4><div class="desc">Emits <strong>[question.id, 0]</strong> when the document is a question
+	and <strong>[answer.question.id,1]</strong> when it's an answer.
+		
+	Question ids begin with a date, so a sample key sequence is:
+	<ul>
+		<li>[2009-01-01-question-y, <strong>0] // question</strong></li>
+		<li>[2009-01-01-question-y, 1] // answer</li>
+		<li>[2009-01-01-question-y, 1] // answer</li>		
+		<li>[2010-01-01-question-x, <strong>0] // question</strong></li>
+		<li>[2010-01-01-question-x, 1] // answer</li>
+		<li>[2010-01-01-question-x, 1] // answer</li>
+	</ul>
+
+	The second numeric key forces the answers to follow the question,
+	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".<br/><a class="link-source" href="views.questions.map.html">view source</a></div>
+			
+				<h3><a name="views.all_answers">all_answers</a></h3><h4>map</h4><div class="desc"><p>If invoked with include_docs=true, this view returns a full answer doc and the full question for each
+	answer. It's another way to see linked documents together in the client.</p>
+	
+	<p>I used this view, along with some python to copy question.created into answer.question_created for
+	each (question, answer) where question._id == answer.question_id
+	
+	python code is in resync.py in the root of the project<br/><a class="link-source" href="views.all_answers.map.html">view source</a></div>
+			
+				<h3><a name="views.questions_index">questions_index</a></h3><h4>map</h4><div class="desc">Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
+	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.
+		
+	answer.question_created is always equal to question.created, so a sample key sequence is:
+	<ul>
+		<li>[2009-01-01, question-y, <strong>0] // question</strong></li>
+		<li>[2009-01-01, question-y, 1] // answer</li>
+		<li>[2009-01-01, question-y, 1] // answer</li>		
+		<li>[2010-01-02, question-x, <strong>0] // question</strong></li>
+		<li>[2010-01-02, question-x, 1] // answer</li>
+		<li>[2010-01-02, question-x, 1] // answer</li>
+	</ul>
+
+	The second numeric key forces the answers to follow the question,
+	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".<br/><a class="link-source" href="views.questions_index.map.html">view source</a></div>
+			
+			
+			<h2><a name="shows">shows</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			
+				<h3>ask</h3><div class="desc">Displays the "ask question form", <strong>remember to invoke with a document id, even bogus</strong><br/><a class="link-source" href="shows.ask.html">view source</a></div>
+			
+				<h3>results</h3><div class="desc">Displays the search results templates, which in short is some clientside javascript code
+	that executes the _fti (couchdb-lucene) handler and renders the results. This is needed because
+	couchdb-lucene can't be rendered with a list function.<br/><a class="link-source" href="shows.results.html">view source</a></div>
+			
+			
+			<h2><a name="lists">lists</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			
+				<h3>question_and_answers</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>startkey=["{{question_id}}",0]&endkey=["{{question_id}}",1]</strong>
+	will show a question and all its answers.<br/><a class="link-source" href="lists.question_and_answers.html">view source</a></div>
+			
+				<h3>questions</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>descending=true</strong>
+	will show most recent questions first and a count of answers for each question.<br/><a class="link-source" href="lists.questions.html">view source</a></div>
+			
+				<h3>questions</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>descending=true</strong>
+	will show most recent questions first and a count of answers for each question.<br/><a class="link-source" href="lists.questions.html">view source</a></div>
+			
+			
+			<h2><a name="updates">updates</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			
+				<h3>answer</h3><div class="desc">Handler for a newly submitted answer, builds an _id using the question id plus a timestamp,
+	<strong>must be invoked for an existing question</strong><br/><a class="link-source" href="updates.answer.html">view source</a></div>
+			
+				<h3>question</h3><div class="desc">Handler for a newly submitted question, builds an _id using
+	the current date and the question title; splits tags into an array<br/><a class="link-source" href="updates.question.html">view source</a></div>
+			
+			
+			<h2><a name="fulltext">fulltext</a></h2>
+			<div class="top"><a href="#">top</a></div>
+			
+				<h3><a name="fulltext.questions">questions</a></h3><h4>index</h4><div class="desc">Index question title and body<br/><a class="link-source" href="fulltext.questions.index.html">view source</a></div>
+			
+		</div>
+	</body>
+</html>

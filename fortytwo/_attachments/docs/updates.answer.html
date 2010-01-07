@@ -1,0 +1,36 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span> 	Handler for a newly submitted answer, builds an _id using the question id plus a timestamp,
+<span class='line'>  3</span> 	&lt;strong>must be invoked for an existing question&lt;/strong>	
+<span class='line'>  4</span> 	@name answer
+<span class='line'>  5</span> 	@class
+<span class='line'>  6</span> 	@memberOf updates
+<span class='line'>  7</span> */</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">doc</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">req</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="WHIT">	</span><span class="COMM">// !code _attachments/lib/fortytwo.js</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="WHIT">	</span><span class="COMM">// !code vendor/couchapp/date.js	</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="WHIT">	</span><span class="COMM">// the existing doc must be a question</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">answer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">eval</span><span class="PUNC">(</span><span class="STRN">'('</span><span class="PUNC">+</span><span class="NAME">req.body</span><span class="PUNC">+</span><span class="STRN">')'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">		
+<span class='line'> 15</span> 		</span><span class="COMM">// store servertime...</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">		</span><span class="NAME">answer.created</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toJSON</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">		
+<span class='line'> 18</span> 		</span><span class="COMM">// ...but use client-time on the id to ensure double posts don't collide		</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">		</span><span class="NAME">answer._id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">doc._id</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'--answer--'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">answer.time</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">		
+<span class='line'> 21</span> 		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">reply</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">			</span><span class="NAME">ok</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'answer accepted'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">			</span><span class="NAME">answer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">answer</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">		
+<span class='line'> 26</span> 		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">answer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">toJSON</span><span class="PUNC">(</span><span class="NAME">reply</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">	</span><span class="KEYW">throw</span><span class="PUNC">(</span><span class="STRN">'question must exist'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="PUNC">}</span></pre></body></html>

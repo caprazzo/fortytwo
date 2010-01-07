@@ -1,0 +1,21 @@
+{{%JSTACHE-ENABLE-STRING-ARRAYS}}
+
+<div class="question-headline">	  				
+	
+	<div class="counter">	  					
+		<div class="count">{{answers}}</div>
+	  	<span>answers</span>	  					
+	 </div>	  			
+	  				
+	<div class="title">
+		<a href="../../_list/question_and_answers/questions?startkey=[&quot;{{url_id}}&quot;,0]&endkey=[&quot;{{url_id}}&quot,1]">
+		<h3>{{title}}</h3></a>
+		<div class="question-preview">{{{question_preview}}}</div>	
+		tags: <span class="tags">{{tags}} {{#tags}} {{.}} {{/tags}}</span>			
+	</div>	  				
+	
+	<div class="question-asked">
+		<span class="elapsed">asked <span class="raw-date">on {{created}}</span></span>
+	</div>
+	
+</div>

@@ -10,6 +10,9 @@ function(doc, req) {
 	// !code vendor/couchapp/date.js	
 	// the existing doc must be a question
 	if (doc) {
+		// trunk uses req.id, 0.10 req.docId
+		//if (!req.id) req.id = req.docId;
+		
 		var answer = eval('('+req.body+')');
 		
 		// store servertime...
@@ -17,10 +20,7 @@ function(doc, req) {
 		
 		// copy question creation date
 		answer.question_created = doc.created;
-		
-		// ...but use client-time on the id to ensure double posts don't collide		
-		answer.question_id = doc._id;
-		
+				
 		var reply = {
 			ok: 'answer accepted',
 			answer: answer
@@ -28,5 +28,6 @@ function(doc, req) {
 		
 		return [answer, toJSON(reply)];
 	}
-	throw('question must exist');
+	return [null, '{"ok":"ignored"}'];
+
 }

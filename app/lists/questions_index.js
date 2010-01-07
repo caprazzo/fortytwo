@@ -24,12 +24,9 @@ function(head, req) {
 			var question = row.value;
 			question.answers = answers;
 			
-			
 			question.question_preview = (question.question.length > preview_length) 
 				? converter.makeHtml(question.question.substring(0,100)) + '...'
-				: converter.makeHtml(question.question);
-				
-			
+				: converter.makeHtml(question.question);	
 			
 			question.url_id = encodeURIComponent(question._id).replace(/%22/g,"%5C%22");	
 			

@@ -26,7 +26,17 @@ var FortyTwo = {
 	},
 	question_details_link: function(question_id) {
 		
+	},
+	escape: function(s) {
+	return s.toString().replace(/[&"<>\\]/g, function(s) {
+		switch(s) {
+				case "&": return "&amp;";
+				case "\\": return "\\\\";;
+				case '"': return '\"';;
+				case "<": return "&lt;";
+				case ">": return "&gt;";
+				default: return s;
+			}
+		});
 	}
-	
-	
 }

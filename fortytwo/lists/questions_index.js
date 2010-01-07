@@ -11,26 +11,23 @@ function(head, req) {
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
 
 	var preview_length=100;	
-	send(Mustache.to_html(templates.head, {title:"questions"}));
+	send(Mustache.to_html(templates.app_head, {title:"questions"}));
 	send(Mustache.to_html(templates.questions.list_head));
 	answers = 0;
 	var converter = new Showdown.converter();
 
 	while (row = getRow()) {
-		if (row.value.answer) {
+		if (row.value==1) {
 			answers++;
 		}	
 		else if (row.value) {
 			var question = row.value;
 			question.answers = answers;
-			
-			
+						
 			question.question_preview = (question.question.length > preview_length) 
 				? converter.makeHtml(question.question.substring(0,100)) + '...'
 				: converter.makeHtml(question.question);
-				
-			
-			
+							
 			question.url_id = encodeURIComponent(question._id).replace(/%22/g,"%5C%22");	
 			
 			send(Mustache.to_html(templates.questions.list_item, question));
@@ -39,7 +36,7 @@ function(head, req) {
 	}
 	
 	send(Mustache.to_html(templates.questions.list_foot));
-	send(Mustache.to_html(templates.foot),{});
+	send(Mustache.to_html(templates.app_foot),{});
 		
 }
 

@@ -1,0 +1,46 @@
+	<div class="ask-question-form">
+		<form method="PUT" action="../../_update/ask/new_question">
+		<label for="question-title">title</label>
+		
+		<input type="text" id="question-title" class="question-title" name="question-title"/><br/>
+		<textarea class="question-body" name="question-body"></textarea><br/>
+		<div class="format-help">You can use <a href="../../markdown-syntax.txt">markdown syntax</a> to format your question</div>
+		<label for="question-tags">tags</label><input type="text" class="question-tags"></input><br/>
+		<br/>
+		<button type="button" class="ask-question-submit"><span><span>ask the question</span></span></button>
+		</form>
+	</div>
+	
+		<script>
+		FortyTwo.uuid(function(uuid) {
+			$('.ask-question-form .ask-question-submit').click(function() {
+				try {	
+					var doc = {
+		  				title: $('.question-title').val(),
+		  				question: $('.question-body').val(),
+		  				tags: $('.question-tags').val()
+	  				}
+		  			
+			  		$.ajax({
+		  				type: 'PUT',
+		  				url: '../../_update/question/' + uuid,
+		  				data: JSON.stringify(doc),
+						dataType: 'json',
+		  				success: function(data) {
+							if (data.ok) {
+								var url = '../../_list/question_and_answers/questions?startkey=["'+data.id+'",0]&endkey=["'+data.id+'",1]';
+								window.location = url;
+							}
+	  					},
+	  					error: function(e) {
+	  						alert('ko')
+	  					}  				
+	  				});		  				  				
+  				} finally {
+  					// in case of javascript error
+  					// we still want to avoid the event to propagate
+  					return false;
+  				}
+  			});
+  		});
+		</script>
