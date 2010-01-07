@@ -29,7 +29,7 @@
 					dataType: 'json',
 	  				success: function(data) {
 						if (data.ok) {
-							var url = '../../_list/question_and_answers/questions?startkey=["'+data.id+'",0]&endkey=["'+data.id+'",1]';
+							var url = '../../_list/question_and_answers/questions?startkey=["'+data.id+'"]&endkey=["'+data.id+'","Z"]';
 							window.location = url;
 						}
   					},
