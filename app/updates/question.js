@@ -20,7 +20,7 @@ function(doc, req) {
 		var now = new Date();
 		doc = eval('('+req.body+')');
 		doc.created = now.toJSON();
-		doc._id = FortyTwo.make_timestamp_from_date(now) + '-' + FortyTwo.make_id_from_string(req.id);
+		doc._id = req.id;
 		if (doc.tags) {
 			var tags = []
 			doc.tags.split(',').forEach(function(tag) {

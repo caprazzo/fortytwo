@@ -11,33 +11,34 @@
 		</form>
 	</div>
 	
-		<script>
-			$('.ask-question-form .ask-question-submit').click(function() {
-				var $form = $(this);
-				try {	
-					var doc = {
-		  				title: $('.question-title').val(),
-		  				question: $('.question-body').val(),
-		  				tags: $('.question-tags').val()
-	  				}
-		  			
-		  			var id = 'question-' + FortyTwo.make_id_from_string(doc.title);		  						  		
-			  		$.ajax({
-		  				type: 'PUT',
-		  				url: '../../_update/question/' + id,
-		  				data: JSON.stringify(doc),
-						dataType: 'json',
-		  				success: function(data) {
-							if (data.ok) {
-								var url = '../../_list/question_and_answers/questions?startkey=["'+data.id+'",0]&endkey=["'+data.id+'",1]';
-								window.location = url;
-							}
-	  					},
-	  					error: function(e) {
-	  						alert('ko')
-	  					}  				
-	  				});		  				  				
-  				} catch(e) { alert(e); }
-  				return false;
-  		});
-		</script>
+	<script>
+	FortyTwo.uuid(function(uuid) {
+		$('.ask-question-form .ask-question-submit').click(function() {
+			var $form = $(this);
+			try {	
+				var doc = {
+	  				title: $('.question-title').val(),
+	  				question: $('.question-body').val(),
+	  				tags: $('.question-tags').val()
+  				}
+	  			
+		  		$.ajax({
+	  				type: 'PUT',
+	  				url: '../../_update/question/' + uuid,
+	  				data: JSON.stringify(doc),
+					dataType: 'json',
+	  				success: function(data) {
+						if (data.ok) {
+							var url = '../../_list/question_and_answers/questions?startkey=["'+data.id+'",0]&endkey=["'+data.id+'",1]';
+							window.location = url;
+						}
+  					},
+  					error: function(e) {
+  						alert('ko')
+  					}  				
+  				});		  				  				
+ 				} catch(e) { alert(e); }
+ 				return false;
+ 		});
+	});
+	</script>
