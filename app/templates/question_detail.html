@@ -19,8 +19,7 @@
 	<script>
 		(function() {
 			function post_vote(id, vote) {
-				
-				var url = '../../_update/' + ((vote == 'up') ? 'question_vote_up/' : 'question_vote_down/') + id;
+				var url = '../../_update/question_vote/' + id + '?vote=' + vote;
 				$.ajax({
 					url: url,
 					type: 'PUT',
@@ -28,6 +27,9 @@
 					success: function(data) {
 						var votes = data.votes;
 						$('#vote-count').html(votes);
+					},
+					error: function(a, b, c) {
+						if(console) console.log(a);
 					}
 				});
 			}
