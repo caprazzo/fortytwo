@@ -1,0 +1,40 @@
+body {
+	background-color: #00B7EB;
+	font-family: sans-serif;
+}
+.content {
+	width: 40em;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	border: 1px solid #ddd;
+	padding: 1em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+h2 {
+	margin-left: 0.5em;
+	color: #333;
+	border-bottom: 1px solid #333;
+	margin-bottom:0;
+}
+h3 {
+	margin-left: 1em;
+}
+h4, div.desc {
+	margin-left: 1.5em;
+}
+div.desc {
+	padding: 0.25em;
+}
+div.top {				
+	text-align:right;
+	position: relative;
+	top: -1.5em;
+}
+a, a:visited {
+	color: #00B7EB;
+}
+a.link-source {
+	font-size: small;
+}
