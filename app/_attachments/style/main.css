@@ -1,5 +1,16 @@
-/* @override http://localhost:5984/fortytwo/_design/fortytwo/style/main.css */
+/* @override http://caprazzi.net:5984/fortyfour/_design/fortytwo/style/main.css */
 
+/* @override http://localhost:5984/fortytwo/_design/fortytwo/style/main.css */
+.hello {
+	background-color: #f6dc2a;
+	text-align: center;
+	padding: 0.3em;
+	font-weight:  bold;
+	font-size: 110%;
+	margin-left: 3em;
+	margin-right: 3em;
+	margin-bottom: 2em;
+}
 body {
 	background-color: white;
 	font-family:monospace;

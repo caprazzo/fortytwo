@@ -1,5 +1,21 @@
 		</div><!--/app-body-->
 		<script type="text/javascript">
+		  var uservoiceOptions = {
+		    key: 'fortytwo',
+		    host: 'fortytwo.uservoice.com', 
+		    forum: '37788',
+		    lang: 'en',
+		    showTab: false
+		  };
+		  function _loadUserVoice() {
+		    var s = document.createElement('script');
+		    s.src = ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js";
+		    document.getElementsByTagName('head')[0].appendChild(s);
+		  }
+		  _loadSuper = window.onload;
+		  window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+		</script>
+		<script type="text/javascript">
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-5268498-3']);
@@ -11,6 +27,7 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
   })();
 </script>
+
 	</body>
 <script src="../../lib/pretty-date.js"></script>
 <script type="text/javascript" src="../../lib/SimplyButtons.js"></script>
