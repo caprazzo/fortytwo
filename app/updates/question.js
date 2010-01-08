@@ -1,8 +1,7 @@
 /**
 	Handler for a newly submitted question
-	@name question
-	@class
-	@memberOf updates
+	
+	@name updates.question
 */
 function(doc, req) {
 	// !code _attachments/lib/fortytwo.js
