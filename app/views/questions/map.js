@@ -23,8 +23,6 @@
 		<li>[question-x, '2010/12/04 12:12:37 +0000'] // answer</li>
 	</ul>
 	
-	
-
 	<p>For more about joins, see
 	see http://www.cmlenz.net/archives/2007/10/couchdb-joins</p>
 	
