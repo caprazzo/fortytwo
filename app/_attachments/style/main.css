@@ -157,9 +157,21 @@ a.link :visited {
 .question-details .question-title {
 	font-size: 160%;
 }
-.question-details .question-body {
-	padding: 1em;
+.question-details .question-body-wrapper {
 	margin-top: 1em;
+}
+.question-details .vote-counter {
+	background-color: white;
+	border: 3px solid #E3F4FD;
+	
+}
+.question-details .vote-counter .count {
+	font-size: 130%;
+	color: orange;
+	font-weight: bold;
+}
+.question-details .question-body {
+	padding: 1em;	
 	margin-bottom: 1em;
 	background-color: #e3f4fd;
 	font-size: 110%;
