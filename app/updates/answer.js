@@ -16,7 +16,7 @@ function(doc, req) {
 		
 		// copy question creation date
 		answer.question_created = doc.created;
-		
+		answer.votes = 0;
 		answer.question_id = doc._id;
 		
 		var reply = {

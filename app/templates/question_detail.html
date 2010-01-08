@@ -2,9 +2,9 @@
 <div class="question-details">
 	
 	
-	<div class="counter vote-counter">
+	<div class="counter question-vote-counter">
 			<div class="vote-up">vote up</div>
-			<div class="count" id="vote-count">{{votes}}</div>
+			<div class="count" id="question-vote-count">{{votes}}</div>
 			<div class="vote-down">vote down</div>
 		</div>  	
 		
@@ -25,26 +25,15 @@
 	
 	<script>
 		(function() {
-			function post_vote(id, vote) {
-				var url = '../../_update/question_vote/' + id + '?vote=' + vote;
-				$.ajax({
-					url: url,
-					type: 'PUT',
-					dataType: 'json',
-					success: function(data) {
-						var votes = data.votes;
-						$('#vote-count').html(votes);
-					},
-					error: function(a, b, c) {
-						if(console) console.log(a);
-					}
-				});
+			$vote_el = $('#question-vote-count');
+			function update_vote_display(votes) {
+				$vote_el.html(votes);
 			}
 			$('.vote-up').click(function() {
-				post_vote($('#question_id').val(), 'up');
+				FortyTwo.post_vote($('#question_id').val(), 'up', update_vote_display);
 			});
 			$('.vote-down').click(function() {
-				post_vote($('#question_id').val(), 'down');
+				FortyTwo.post_vote($('#question_id').val(), 'down', update_vote_display);
 			});
 		})();
 	</script>

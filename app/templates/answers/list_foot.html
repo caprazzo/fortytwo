@@ -1,1 +1,17 @@
 </div>
+<script>
+(function() {
+	function get_updater(vote) {
+		return function() {
+			var self = this;
+			var answer_id = $(this).siblings('.answer-id').val();
+			FortyTwo.post_vote(answer_id, vote, function(votes) {
+				$(self).siblings('.count').html(votes);
+			});	
+		}
+	}
+	$('.answer-vote-up').click(get_updater('up'));
+	$('.answer-vote-down').click(get_updater('down'));
+	
+})();
+</script>

@@ -1,4 +1,10 @@
 <div class="answer-list-item">
+	<div class="counter">
+		<input type="hidden" class="answer-id" value="{{_id}}"/>
+		<div class="vote-up answer-vote-up">vote up</div>
+		<div class="count">{{votes}}</div>
+		<div class="vote-down answer-vote-down">vote down</div>
+	</div>
 	<div class="answer-body markdown">{{{answer_html}}}</div>
 	<div class="answer-posted">
 		<span class="elapsed">answer posted <span class="raw-date">{{created}}</span></span>
