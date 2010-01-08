@@ -1,8 +1,7 @@
 /**
 	Handler for a newly submitted question
-	@name question
-	@class
-	@memberOf updates
+	
+	@name updates.question
 */
 function(doc, req) {
 	// !code _attachments/lib/fortytwo.js
@@ -20,6 +19,7 @@ function(doc, req) {
 		doc = eval('('+req.body+')');
 		doc.created = now.toJSON();
 		doc._id = req.id;
+		doc.votes = 1;
 		if (doc.tags) {
 			var tags = []
 			doc.tags.split(',').forEach(function(tag) {

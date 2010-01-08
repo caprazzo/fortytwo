@@ -30,6 +30,7 @@
 */
 function(doc) {
 	if (doc.question) {
+		if (typeof doc.votes != 'number') doc.votes = 1;
 		emit([doc._id, doc.created], doc);
 	}
 	if (doc.answer) {

@@ -16,7 +16,6 @@ function(head, req) {
 	while(row = getRow()) {
 		if (row.value.question) {
 			question_doc = row.value;
-			question_doc.url_id = encodeURIComponent(question_doc._id).replace(/%22/g,"%5C%22");
 
 			question_doc.question_html = converter.makeHtml(FortyTwo.escape(question_doc.question));
 			send(Mustache.to_html(templates.app_head, {title:question_doc.title}));

@@ -1,9 +1,8 @@
 /**
 	Handler for a newly submitted answer
 	<strong>must be invoked for an existing question</strong>	
-	@name answer
-	@class
-	@memberOf updates
+
+	@name updates.answer
 */
 function(doc, req) {
 	// !code _attachments/lib/fortytwo.js
