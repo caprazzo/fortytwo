@@ -41,8 +41,6 @@
 		<li>[question-x, '2010/12/04 12:12:37 +0000'] // answer</li>
 	</ul>
 	
-	
-
 	<p>For more about joins, see
 	see http://www.cmlenz.net/archives/2007/10/couchdb-joins</p><br/><a class="link-source" href="views.questions.map.html">view source</a></div><h4>map</h4><div class="desc"><p>Emits <strong>[question.id, 0]</strong> when the document is a question
 	and <strong>[answer.question_id,answer.created]</strong> when it's an answer.</p>
@@ -87,10 +85,10 @@
 	
 	python code is in resync.py in the root of the project<br/><a class="link-source" href="views.all_answers.map.html">view source</a></div>
 			
-				<h3><a name="views.questions_index">questions_index</a></h3><h4>map</h4><div class="desc">Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
-	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.
+				<h3><a name="views.questions_index">questions_index</a></h3><h4>map</h4><div class="desc"><p>Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
+	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.</p>
 		
-	answer.question_created is always equal to question.created, so a sample key sequence is:
+	<p>answer.question_created is always equal to question.created, so a sample key sequence is:</p>
 	<ul>
 		<li>[2009-01-01, question-y, <strong>0] // question</strong></li>
 		<li>[2009-01-01, question-y, 1] // answer</li>
@@ -100,8 +98,8 @@
 		<li>[2010-01-02, question-x, 1] // answer</li>
 	</ul>
 
-	The second numeric key forces the answers to follow the question,
-	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".<br/><a class="link-source" href="views.questions_index.map.html">view source</a></div><h4>map</h4><div class="desc">Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
+	<p>The second numeric key forces the answers to follow the question,
+	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".</p><br/><a class="link-source" href="views.questions_index.map.html">view source</a></div><h4>map</h4><div class="desc">Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
 	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.
 		
 	answer.question_created is always equal to question.created, so a sample key sequence is:
@@ -152,9 +150,9 @@
 			
 				<h3>question</h3><div class="desc">Handler for a newly submitted question<br/><a class="link-source" href="updates.question.html">view source</a></div>
 			
-				<h3>question_vote</h3><div class="desc"><p>Handler for adding or subtracting votes from questions.</p>
+				<h3>vote</h3><div class="desc"><p>Handler for adding or subtracting votes from documents.</p>
 	
-	<p>A query parameter vote=[up|down] must be supplied.</p><br/><a class="link-source" href="updates.question_vote.html">view source</a></div>
+	<p>A query parameter vote=[up|down] must be supplied.</p><br/><a class="link-source" href="updates.vote.html">view source</a></div>
 			
 				<h3>answer</h3><div class="desc">Handler for a newly submitted answer
 	<strong>must be invoked for an existing question</strong><br/><a class="link-source" href="updates.answer.html">view source</a></div>

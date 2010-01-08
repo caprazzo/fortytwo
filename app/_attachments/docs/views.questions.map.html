@@ -30,19 +30,17 @@
 <span class='line'> 23</span> 		&lt;li>[question-x, '2010/12/04 12:12:37 +0000'] // answer&lt;/li>
 <span class='line'> 24</span> 	&lt;/ul>
 <span class='line'> 25</span> 	
-<span class='line'> 26</span> 	
-<span class='line'> 27</span> 
-<span class='line'> 28</span> 	&lt;p>For more about joins, see
-<span class='line'> 29</span> 	see http://www.cmlenz.net/archives/2007/10/couchdb-joins&lt;/p>
-<span class='line'> 30</span> 	
-<span class='line'> 31</span> 	@name views.questions.map
-<span class='line'> 32</span> */</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">doc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doc.question</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">doc.votes</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">doc.votes</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="WHIT">		</span><span class="NAME">emit</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NAME">doc._id</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc.created</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doc.answer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="NAME">emit</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NAME">doc.question_id</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc.created</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 40</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="PUNC">}</span></pre></body></html>
+<span class='line'> 26</span> 	&lt;p>For more about joins, see
+<span class='line'> 27</span> 	see http://www.cmlenz.net/archives/2007/10/couchdb-joins&lt;/p>
+<span class='line'> 28</span> 	
+<span class='line'> 29</span> 	@name views.questions.map
+<span class='line'> 30</span> */</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">doc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">doc.votes</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">doc.votes</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doc.question</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">		</span><span class="NAME">emit</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NAME">doc._id</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc.created</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doc.answer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">		</span><span class="NAME">emit</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NAME">doc.question_id</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc.created</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doc</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="PUNC">}</span></pre></body></html>

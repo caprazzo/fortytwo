@@ -163,7 +163,6 @@ a.link :visited {
 .question-details .vote-counter {
 	background-color: white;
 	border: 3px solid #E3F4FD;
-	
 }
 .question-details .vote-counter .count {
 	font-size: 130%;
@@ -200,12 +199,22 @@ a.link :visited {
 	margin-top: 1.25em;
 	margin-bottom: 1.25em
 }
+.answer-list-item .vote-counter {
+	background-color: white;
+	border: 3px solid #E3F8E1;
+}
+.answer-list-item .vote-counter .count {
+	font-size: 110%;
+	color: #42AE30;
+	font-weight: bold;
+}
 .answers-list .answers-list-header {
 	font-size: 140%;
 	border-bottom: 1px solid black;
 }
 .answer-list-item {
 	padding: 1em;
+	padding-bottom: 2em;
 	padding-left: 0;
 	border-bottom: 1px dotted #CCC;
 }
