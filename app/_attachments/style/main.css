@@ -85,7 +85,7 @@ a.link :visited {
 	color:	black;
 	text-decoration: underline;
 }    	
-.question-headline .counter {
+.counter {
 	background-color: #e3f4fd;
 	float:left;
 	text-align: center;
@@ -93,6 +93,11 @@ a.link :visited {
 	color: black;
 	margin-right: 0.75em;
 	height:100%;
+}
+.vote-up, .vote-down {
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
 }
 .question-headline .question-asked {
 	color: #333;

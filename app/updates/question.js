@@ -20,6 +20,7 @@ function(doc, req) {
 		doc = eval('('+req.body+')');
 		doc.created = now.toJSON();
 		doc._id = req.id;
+		doc.votes = 1;
 		if (doc.tags) {
 			var tags = []
 			doc.tags.split(',').forEach(function(tag) {
