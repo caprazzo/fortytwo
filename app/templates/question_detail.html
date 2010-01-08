@@ -1,12 +1,13 @@
+<input type="hidden" value="{{_id}}" id="question_id"/>
 <div class="question-details">
 	<div class="counter">
 		<div class="vote-up">vote up</div>
-		<div class="count">{{votes}}</div>
+		<div class="count" id="vote-count">{{votes}}</div>
 		<span>votes</span>
 		<div class="vote-down">vote down</div>
 	</div>  
 	
-	<h1 class="question-title"><a class="question-link" href="../../_list/question_and_answers/questions?startkey=[&quot;{{url_id}}&quot;]&endkey=[&quot;{{url_id}}&quot,&quot;Z&quot;]">{{title}}</a></h1>
+	<h1 class="question-title"><a class="question-link" href="../../_list/question_and_answers/questions?startkey=[&quot;{{_id}}&quot;]&endkey=[&quot;{{_id}}&quot,&quot;Z&quot;]">{{title}}</a></h1>
 	tags: <span class="tags">{{tags}}</span>
 		
 	<div class="question-body markdown">{{{question_html}}}</div>
@@ -14,4 +15,28 @@
 	<div class="question-asked">
 		<span class="elapsed">asked <span class="raw-date">{{created}}</span></span>
 	</div>
+	
+	<script>
+		(function() {
+			function post_vote(id, vote) {
+				
+				var url = '../../_update/' + ((vote == 'up') ? 'question_vote_up/' : 'question_vote_down/') + id;
+				$.ajax({
+					url: url,
+					type: 'PUT',
+					dataType: 'json',
+					success: function(data) {
+						var votes = data.votes;
+						$('#vote-count').html(votes);
+					}
+				});
+			}
+			$('.vote-up').click(function() {
+				post_vote($('#question_id').val(), 'up');
+			});
+			$('.vote-down').click(function() {
+				post_vote($('#question_id').val(), 'down');
+			});
+		})();
+	</script>
 </div>
