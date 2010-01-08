@@ -3,10 +3,10 @@
 (function() {
 	function get_updater(vote) {
 		return function() {
-			var self = this;
-			var answer_id = $(this).siblings('.answer-id').val();
+			var $self = $(this);
+			var answer_id = $self.siblings('.answer-id').val();
 			FortyTwo.post_vote(answer_id, vote, function(votes) {
-				$(self).siblings('.count').html(votes);
+				$self.siblings('.count').html(votes);
 			});	
 		}
 	}
