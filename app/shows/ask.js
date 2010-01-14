@@ -7,8 +7,10 @@
 function(doc, req) {
 	// !json templates
 	// !code lib/mustache.js
-	
-	return Mustache.to_html(templates.app_head, {title:'ask question'})
-		+ Mustache.to_html(templates.question_form)
-	 	+ Mustache.to_html(templates.app_foot);
+	// !code lib/pages.js
+	// !code lib/default_model.js
+		
+	return Mustache.to_html(templates.app_head, pages(req, {title:'ask question'}))
+		+ Mustache.to_html(templates.question_form, pages(req))
+	 	+ Mustache.to_html(templates.app_foot, pages(req));
 }

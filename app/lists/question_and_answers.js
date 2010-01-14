@@ -8,6 +8,7 @@ function(head, req) {
 // !json templates
 // !code lib/mustache.js	
 // !code lib/showdown.js
+// !code lib/pages.js
 // !code _attachments/lib/fortytwo.js
 
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
@@ -18,8 +19,8 @@ function(head, req) {
 			question_doc = row.value;
 
 			question_doc.question_html = converter.makeHtml(FortyTwo.escape(question_doc.question));
-			send(Mustache.to_html(templates.app_head, {title:question_doc.title}));
-			send(Mustache.to_html(templates.question_detail, question_doc));
+			send(Mustache.to_html(templates.app_head, pages(req, {title:question_doc.title})));
+			send(Mustache.to_html(templates.question_detail, pages(req, question_doc)));
 			send(Mustache.to_html(templates.answers.list_head));
 		}
 		else {
@@ -29,5 +30,5 @@ function(head, req) {
 	}	
 	send(Mustache.to_html(templates.answers.list_foot));
 	send(Mustache.to_html(templates.answer_form, question_doc));
-	send(Mustache.to_html(templates.app_foot));
+	send(Mustache.to_html(templates.app_foot, pages(req)));
 }

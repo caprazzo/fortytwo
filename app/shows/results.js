@@ -9,8 +9,9 @@
 function(doc, req) {
 	// !json templates
 	// !code lib/mustache.js
+	// !code lib/pages.js
 	
-	return Mustache.to_html(templates.app_head, {title:'title'})
+	return Mustache.to_html(templates.app_head, pages(req, {title:'title'}))
 		+ Mustache.to_html(templates.results, {q:req.query.q})
-	 	+ Mustache.to_html(templates.app_foot);
+	 	+ Mustache.to_html(templates.app_foot, pages(req));
 }

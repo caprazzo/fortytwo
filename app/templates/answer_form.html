@@ -1,16 +1,17 @@
 	<div class="answer-form">
 		<h1 class="answer-form-head">Have an answer?</h1>
 		<textarea class="answer-area"></textarea><br/>
-		<div class="format-help">You can use <a href="../../markdown-syntax.txt">markdown syntax</a> to format your answer</div>
+		<div class="format-help">You can use <a href="{{page_root}}/markdown-syntax.txt">markdown syntax</a> to format your answer</div>
 		<button class="answer-submit"><span><span>submit your answer</span></span></button>
 		<input type="hidden" class="question_id" value="{{_id}}"/>
 	</div>	
 	<script>
 	var question_id = $('.question_id').val();
+	var put_url = '{{page_update_answer}}/' + question_id;
 	FortyTwo.uuid(function(uuid) {
 		$('.answer-submit').click(function() {
 			$.ajax({
-				url: '../../_update/answer/' + question_id,
+				url: put_url,
 				type: 'PUT',
 				data: JSON.stringify({
 					time: new Date().getTime(),

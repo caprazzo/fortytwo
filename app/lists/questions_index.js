@@ -7,11 +7,12 @@ function(head, req) {
 // !json templates
 // !code lib/mustache.js
 // !code lib/showdown.js
-// !
+// !code lib/pages.js
+
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
 
 	var preview_length=100;	
-	send(Mustache.to_html(templates.app_head, {title:"questions"}));
+	send(Mustache.to_html(templates.app_head, pages(req, {title:"questions"})));
 	send(Mustache.to_html(templates.questions.list_head));
 	answers = 0;
 	var converter = new Showdown.converter();
@@ -30,13 +31,13 @@ function(head, req) {
 			
 			question.url_id = encodeURIComponent(question._id).replace(/%22/g,"%5C%22");	
 			
-			send(Mustache.to_html(templates.questions.list_item, question));
+			send(Mustache.to_html(templates.questions.list_item, pages(req, question)));
 			answers = 0;
 		} 	
 	}
 	
 	send(Mustache.to_html(templates.questions.list_foot));
-	send(Mustache.to_html(templates.app_foot),{});
+	send(Mustache.to_html(templates.app_foot, pages(req)));
 		
 }
 
