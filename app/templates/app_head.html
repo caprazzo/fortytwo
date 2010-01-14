@@ -3,26 +3,26 @@
   <head>
     <title>{{title}} - fortytwo</title>
 	<link rel="shortcut icon" href="{{page_root}}/images/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="{{page_root}}/style/reset-min.css"/>
-    <link rel="stylesheet" type="text/css" href="{{page_root}}/style/fonts-min.css"/>      
-    <link rel="stylesheet" type="text/css" href="{{page_root}}/style/main.css"/>
-	<link rel="stylesheet" type="text/css" href="{{page_root}}/style/SimplyButtons.css" />
-	<script src="{{page_root}}/lib/json2.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{app_root}}/style/reset-min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{app_root}}/style/fonts-min.css"/>      
+    <link rel="stylesheet" type="text/css" href="{{app_root}}/style/main.css"/>
+	<link rel="stylesheet" type="text/css" href="{{app_root}}/style/SimplyButtons.css" />
+	<script src="{{app_root}}/lib/json2.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-	<script src="{{page_root}}/lib/fortytwo.js"></script>
+	<script src="{{app_root}}/lib/fortytwo.js"></script>
   </head>
   <body>
 
   	<div class="app-main">
 		<div class="docs-menu">
-			<a class="link" href="{{page_root}}/_show/auth">login or signup</a> -
-			<a class="link" href="{{page_root}}/docs/index.html">docs</a> -
+			<a class="link" href="{{app_root}}{{path_login}}">login or signup</a> -
+			<a class="link" href="{{app_root}}{{path_docs}}">docs</a> -
 			<a class="link" href="http://github.com/mcaprari/fortytwo">source</a> -
 			<a class="link" href="http://caprazzi.net">caprazzi.net</a>
 		</div>		
 	  	<div class="app-tools">
-  			<a class="link" href="{{page_question_list}}">Browse</a>,<br/>
-  			<a class="link" href="{{page_ask}}">Ask a question</a> or Search: <form style="display:inline" action="{{page_results}}"><input type="text" size="55" name="q" class="app-tools-search"/></form>
+  			<a class="link" href="{{app_root}}{{path_question_list}}">Browse</a>,<br/>
+  			<a class="link" href="{{app_root}}{{path_ask}}">Ask a question</a> or Search: <form style="display:inline" action="{{app_root}}{{path_results}}"><input type="text" size="55" name="q" class="app-tools-search"/></form>
   			<div class="forty-two-logo"><div>42</div></div>
 	  	</div>
 		

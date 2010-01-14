@@ -7,11 +7,18 @@
 	@memberOf shows
 */
 function(doc, req) {
-	// !json templates
-	// !code lib/mustache.js
-	// !code lib/pages.js
 	
-	return Mustache.to_html(templates.app_head, pages(req, {title:'title'}))
-		+ Mustache.to_html(templates.results, {q:req.query.q})
-	 	+ Mustache.to_html(templates.app_foot, pages(req));
+	// !json templates
+	// !code config/config.js
+	// !code lib/mustache.js	
+	// !code lib/showdown.js
+	
+	var base = merge(url_info(req), CFG.path);
+	function html(template, mod) {
+		return Mustache.to_html(template, mod ? merge(base, mod) : base);
+	}
+	
+	return html(templates.app_head, {title:'search results'})
+		+ html(templates.results, {q:req.query.q})
+	 	+ html(templates.app_foot);
 }

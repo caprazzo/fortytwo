@@ -1,9 +1,3 @@
-/**
-	Displays the "ask question form", <strong>remember to invoke with a document id, even bogus</strong>
-	@name ask
-	@class
-	@memberOf shows
-*/
 function(doc, req) {
 	// !json templates
 	// !code config/config.js
@@ -14,8 +8,8 @@ function(doc, req) {
 	function html(template, mod) {
 		return Mustache.to_html(template, mod ? merge(base, mod) : base);
 	}
-		
-	return html(templates.app_head, {title:'ask question'})
-		+ html(templates.question_form)
+	
+	return html(templates.app_head, {title:'login or signup'})
+		+ html(templates.auth_page)
 	 	+ html(templates.app_foot);
 }

@@ -4,19 +4,22 @@
 	@name lists.questions
 */
 function(head, req) {
-// !json templates
-// !code lib/mustache.js
-// !code lib/showdown.js
-// !code lib/pages.js
+	
+	// !json templates
+	// !code config/config.js
+	// !code lib/mustache.js	
+	// !code lib/showdown.js
+	// !code _attachments/lib/fortytwo.js
 
-	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
-
-	var preview_length=100;	
-	send(Mustache.to_html(templates.app_head, pages(req, {title:"questions"})));
-	send(Mustache.to_html(templates.questions.list_head));
-	answers = 0;
+	var base = merge(url_info(req), CFG.path);
+	function out(template, mod) {
+		send(Mustache.to_html(template, mod ? merge(base, mod) : base));
+	}
 	var converter = new Showdown.converter();
-
+	
+	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
+	answers = 0;
+	out(templates.app_head, {title: 'questions'});
 	while (row = getRow()) {
 		if (row.value==1) {
 			answers++;
@@ -26,18 +29,18 @@ function(head, req) {
 			question.answers = answers;
 			
 			question.question_preview = (question.question.length > preview_length) 
-				? converter.makeHtml(question.question.substring(0,100)) + '...'
+				? converter.makeHtml(question.question.substring(0,CFG.preview_length)) + '...'
 				: converter.makeHtml(question.question);	
 			
 			question.url_id = encodeURIComponent(question._id).replace(/%22/g,"%5C%22");	
 			
-			send(Mustache.to_html(templates.questions.list_item, pages(req, question)));
+			out(templates.questions.list_item, question);
 			answers = 0;
 		} 	
 	}
 	
-	send(Mustache.to_html(templates.questions.list_foot));
-	send(Mustache.to_html(templates.app_foot, pages(req)));
-		
+	//send(Mustache.to_html(templates.questions.list_foot));
+	//send(Mustache.to_html(templates.app_foot, pages(req)));
+
 }
 
