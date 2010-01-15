@@ -1,17 +1,19 @@
 <div class="auth-page">
-  	<h3>User sign in</h3>
-  	<br/>
+	<div class="hello">
+		<a href="http://github.com/mcaprari/couchdb-openid">OpenId support</a> is experimental and has been tested with few providers. <br/><a onclick="UserVoice.Popin.show(uservoiceOptions); return false;" href="#">Please  let know if it works for you</a>.<br/>
+		(You can get a working openid at <a href="http://www.myopenid.com">myopenid.com</a>)
+	</div>
+	<div>
   	 <form name="openid-auth" method="get" action="/_session" class="sign-in-form">
 	    <fieldset>
-	      <legend>Sign in using OpenID</legend><br />
+	      <!--<legend>Sign in using OpenID</legend><br />-->
 	      <label for="id_openid_url">OpenId</label>
 	      <input type="hidden" name="openid" value="auth-request"/>
 	      <input type="hidden" name="app-return-address" value="{{host}}{{app_root}}{{path_question_list}}"/>
 	      <input id="id_openid_url" type="text"
 	      	class="required openid" name="openid-identifier" maxlength="255" />
-	      <input name="bsignin" type="submit" value="Sign in using OpenID" class="button">
+	      <input class="button" name="bsignin" type="submit" value="Sign in using OpenID" class="button">
 	    </fieldset>
 	  </form>
-
 	</div>
 </div>

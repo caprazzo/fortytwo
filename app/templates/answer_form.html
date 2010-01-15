@@ -7,7 +7,7 @@
 	</div>	
 	<script>
 	var question_id = $('.question_id').val();
-	var put_url = '{{page_update_answer}}/' + question_id;
+	var put_url = '{{app_root}}{{path_update_answer}}/' + question_id;
 	FortyTwo.uuid(function(uuid) {
 		$('.answer-submit').click(function() {
 			$.ajax({
