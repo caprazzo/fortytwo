@@ -6,7 +6,7 @@
 	      <legend>Sign in using OpenID</legend><br />
 	      <label for="id_openid_url">OpenId</label>
 	      <input type="hidden" name="openid" value="auth-request"/>
-	      <input type="hidden" name="app-return-address" value="{{page_abs_question_list}}"/>
+	      <input type="hidden" name="app-return-address" value="{{host}}{{app_root}}{{path_question_list}}"/>
 	      <input id="id_openid_url" type="text"
 	      	class="required openid" name="openid-identifier" maxlength="255" />
 	      <input name="bsignin" type="submit" value="Sign in using OpenID" class="button">

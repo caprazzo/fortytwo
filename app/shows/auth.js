@@ -2,9 +2,8 @@ function(doc, req) {
 	// !json templates
 	// !code config/config.js
 	// !code lib/mustache.js	
-	// !code lib/showdown.js
 	
-	var base = merge(url_info(req), CFG.path);
+	var base = merge(url_info(req), auth_info(req), CFG.path);
 	function html(template, mod) {
 		return Mustache.to_html(template, mod ? merge(base, mod) : base);
 	}

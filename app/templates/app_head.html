@@ -15,7 +15,12 @@
 
   	<div class="app-main">
 		<div class="docs-menu">
+			{{#auth_need_login}}
 			<a class="link" href="{{app_root}}{{path_login}}">login or signup</a> -
+			{{/auth_need_login}}
+			{{#auth_username}}
+			Welcome {{auth_username}}
+			{{/auth_username}}
 			<a class="link" href="{{app_root}}{{path_docs}}">docs</a> -
 			<a class="link" href="http://github.com/mcaprari/fortytwo">source</a> -
 			<a class="link" href="http://caprazzi.net">caprazzi.net</a>

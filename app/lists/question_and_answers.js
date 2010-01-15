@@ -11,7 +11,7 @@ function(head, req) {
 	// !code lib/showdown.js
 	// !code _attachments/lib/fortytwo.js
 
-	var base = merge(url_info(req), CFG.path);
+	var base = merge(url_info(req), auth_info(req), CFG.path);
 	function out(template, mod) {
 		send(Mustache.to_html(template, mod ? merge(base, mod) : base));
 	}

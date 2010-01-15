@@ -23,9 +23,20 @@ function url_info(req) {
 		referer: req['headers']['Referer']
 	}
 }
+function auth_info(req) {
+	return {
+		auth_need_login: !(req.userCtx && req.userCtx.name),
+		auth_username: req.userCtx && req.userCtx.name
+	};
+}
+// recursive object merge
 function merge(A, B) {
-	var k=null, r = {};
+	var k, r = {};
 	for (k in A) r[k] = A[k];
 	for (k in B) r[k] = B[k];
+	if (arguments.length >= 2) {
+		Array.prototype.splice.call(arguments, 0, 2, r);
+ 		return merge.apply(null, arguments);
+	}
 	return r;
 }

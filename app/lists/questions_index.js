@@ -11,13 +11,14 @@ function(head, req) {
 	// !code lib/showdown.js
 	// !code _attachments/lib/fortytwo.js
 
-	var base = merge(url_info(req), CFG.path);
+	var base = merge(url_info(req), auth_info(req), CFG.path);
 	function out(template, mod) {
 		send(Mustache.to_html(template, mod ? merge(base, mod) : base));
 	}
 	var converter = new Showdown.converter();
 	
 	start({"headers":{"Content-Type" : "text/html; charset=utf-8"}});
+
 	answers = 0;
 	out(templates.app_head, {title: 'questions'});
 	while (row = getRow()) {
@@ -28,7 +29,7 @@ function(head, req) {
 			var question = row.value;
 			question.answers = answers;
 			
-			question.question_preview = (question.question.length > preview_length) 
+			question.question_preview = (question.question.length > CFG.preview_length) 
 				? converter.makeHtml(question.question.substring(0,CFG.preview_length)) + '...'
 				: converter.makeHtml(question.question);	
 			
@@ -39,8 +40,8 @@ function(head, req) {
 		} 	
 	}
 	
-	//send(Mustache.to_html(templates.questions.list_foot));
-	//send(Mustache.to_html(templates.app_foot, pages(req)));
+	out(templates.questions.list_foot);
+	out(templates.app_foot);
 
 }
 
