@@ -2,9 +2,8 @@
 	Displays the search results templates, which in short is some clientside javascript code
 	that executes the _fti (couchdb-lucene) handler and renders the results. This is needed because
 	couchdb-lucene can't be rendered with a list function.
-	@name results
-	@class
-	@memberOf shows
+	
+	@name shows.results
 */
 function(doc, req) {
 	

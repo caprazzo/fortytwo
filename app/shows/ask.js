@@ -1,8 +1,7 @@
 /**
-	Displays the "ask question form", <strong>remember to invoke with a document id, even bogus</strong>
-	@name ask
-	@class
-	@memberOf shows
+	Displays the "ask question form"
+	
+	@name shows.ask
 */
 function(doc, req) {
 	// !json templates

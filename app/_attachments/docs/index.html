@@ -41,6 +41,8 @@
 		<li>[question-x, '2010/12/04 12:12:37 +0000'] // answer</li>
 	</ul>
 	
+	
+
 	<p>For more about joins, see
 	see http://www.cmlenz.net/archives/2007/10/couchdb-joins</p><br/><a class="link-source" href="views.questions.map.html">view source</a></div><h4>map</h4><div class="desc"><p>Emits <strong>[question.id, 0]</strong> when the document is a question
 	and <strong>[answer.question_id,answer.created]</strong> when it's an answer.</p>
@@ -66,8 +68,6 @@
 		<li>[question-x, '2010/12/04 12:12:37 +0000'] // answer</li>
 	</ul>
 	
-	
-
 	<p>For more about joins, see
 	see http://www.cmlenz.net/archives/2007/10/couchdb-joins</p><br/><a class="link-source" href="views.questions.map.html">view source</a></div>
 			
@@ -85,21 +85,7 @@
 	
 	python code is in resync.py in the root of the project<br/><a class="link-source" href="views.all_answers.map.html">view source</a></div>
 			
-				<h3><a name="views.questions_index">questions_index</a></h3><h4>map</h4><div class="desc"><p>Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
-	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.</p>
-		
-	<p>answer.question_created is always equal to question.created, so a sample key sequence is:</p>
-	<ul>
-		<li>[2009-01-01, question-y, <strong>0] // question</strong></li>
-		<li>[2009-01-01, question-y, 1] // answer</li>
-		<li>[2009-01-01, question-y, 1] // answer</li>		
-		<li>[2010-01-02, question-x, <strong>0] // question</strong></li>
-		<li>[2010-01-02, question-x, 1] // answer</li>
-		<li>[2010-01-02, question-x, 1] // answer</li>
-	</ul>
-
-	<p>The second numeric key forces the answers to follow the question,
-	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".</p><br/><a class="link-source" href="views.questions_index.map.html">view source</a></div><h4>map</h4><div class="desc">Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
+				<h3><a name="views.questions_index">questions_index</a></h3><h4>map</h4><div class="desc">Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
 	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.
 		
 	answer.question_created is always equal to question.created, so a sample key sequence is:
@@ -113,7 +99,21 @@
 	</ul>
 
 	The second numeric key forces the answers to follow the question,
-	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".<br/><a class="link-source" href="views.questions_index.map.html">view source</a></div>
+	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".<br/><a class="link-source" href="views.questions_index.map.html">view source</a></div><h4>map</h4><div class="desc"><p>Emits <strong>[question.created, question.id, 0]</strong> when the document is a question
+	and <strong>[answer.question_created, answer.question.id,1]</strong> when it's an answer.</p>
+		
+	<p>answer.question_created is always equal to question.created, so a sample key sequence is:</p>
+	<ul>
+		<li>[2009-01-01, question-y, <strong>0] // question</strong></li>
+		<li>[2009-01-01, question-y, 1] // answer</li>
+		<li>[2009-01-01, question-y, 1] // answer</li>		
+		<li>[2010-01-02, question-x, <strong>0] // question</strong></li>
+		<li>[2010-01-02, question-x, 1] // answer</li>
+		<li>[2010-01-02, question-x, 1] // answer</li>
+	</ul>
+
+	<p>The second numeric key forces the answers to follow the question,
+	see http://www.cmlenz.net/archives/2007/10/couchdb-joins for more about "joins".</p><br/><a class="link-source" href="views.questions_index.map.html">view source</a></div>
 			
 			
 			<h2><a name="shows">shows</a></h2>
@@ -125,15 +125,23 @@
 	that executes the _fti (couchdb-lucene) handler and renders the results. This is needed because
 	couchdb-lucene can't be rendered with a list function.<br/><a class="link-source" href="shows.results.html">view source</a></div>
 			
+				<h3>ask</h3><div class="desc">Displays the "ask question form"<br/><a class="link-source" href="shows.ask.html">view source</a></div>
+			
+				<h3>auth</h3><div class="desc">Displays the "login form"<br/><a class="link-source" href="shows.auth.html">view source</a></div>
+			
+				<h3>results</h3><div class="desc">Displays the search results templates, which in short is some clientside javascript code
+	that executes the _fti (couchdb-lucene) handler and renders the results. This is needed because
+	couchdb-lucene can't be rendered with a list function.<br/><a class="link-source" href="shows.results.html">view source</a></div>
+			
 			
 			<h2><a name="lists">lists</a></h2>
 			<div class="top"><a href="#">top</a></div>
 			
-				<h3>questions</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>descending=true</strong>
-	will show most recent questions first and a count of answers for each question.<br/><a class="link-source" href="lists.questions.html">view source</a></div>
-			
 				<h3>question_and_answers</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>startkey=["{{question_id}}",0]&endkey=["{{question_id}}",1]</strong>
 	will show a question and all its answers.<br/><a class="link-source" href="lists.question_and_answers.html">view source</a></div>
+			
+				<h3>questions</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>descending=true</strong>
+	will show most recent questions first and a count of answers for each question.<br/><a class="link-source" href="lists.questions.html">view source</a></div>
 			
 				<h3>question_and_answers</h3><div class="desc">Used with <a href="#views.questions">views.questions</a>?<strong>startkey=["{{question_id}}",0]&endkey=["{{question_id}}",1]</strong>
 	will show a question and all its answers.<br/><a class="link-source" href="lists.question_and_answers.html">view source</a></div>
@@ -150,14 +158,14 @@
 			
 				<h3>question</h3><div class="desc">Handler for a newly submitted question<br/><a class="link-source" href="updates.question.html">view source</a></div>
 			
-				<h3>vote</h3><div class="desc"><p>Handler for adding or subtracting votes from documents.</p>
-	
-	<p>A query parameter vote=[up|down] must be supplied.</p><br/><a class="link-source" href="updates.vote.html">view source</a></div>
-			
 				<h3>answer</h3><div class="desc">Handler for a newly submitted answer
 	<strong>must be invoked for an existing question</strong><br/><a class="link-source" href="updates.answer.html">view source</a></div>
 			
 				<h3>question</h3><div class="desc">Handler for a newly submitted question<br/><a class="link-source" href="updates.question.html">view source</a></div>
+			
+				<h3>vote</h3><div class="desc"><p>Handler for adding or subtracting votes from documents.</p>
+	
+	<p>A query parameter vote=[up|down] must be supplied.</p><br/><a class="link-source" href="updates.vote.html">view source</a></div>
 			
 			
 			<h2><a name="fulltext">fulltext</a></h2>

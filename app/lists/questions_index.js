@@ -21,6 +21,7 @@ function(head, req) {
 
 	answers = 0;
 	out(templates.app_head, {title: 'questions'});
+	out(templates.questions.list_head);
 	while (row = getRow()) {
 		if (row.value==1) {
 			answers++;
@@ -28,7 +29,7 @@ function(head, req) {
 		else if (row.value) {
 			var question = row.value;
 			question.answers = answers;
-			out(templates.questions.list_head);
+
 			question.question_preview = (question.question.length > CFG.preview_length) 
 				? converter.makeHtml(question.question.substring(0,CFG.preview_length)) + '...'
 				: converter.makeHtml(question.question);	

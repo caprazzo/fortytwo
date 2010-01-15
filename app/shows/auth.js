@@ -1,3 +1,8 @@
+/**
+	Displays the "login form"
+	
+	@name shows.auth
+*/
 function(doc, req) {
 	// !json templates
 	// !code config/config.js
